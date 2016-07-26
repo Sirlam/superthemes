@@ -18,4 +18,8 @@ class UsersController extends BaseController
     public function wishlist(){
         return View::make('users.wishlist');
     }
+
+    public function contact(){
+        return View::make('contact');
+    }
 }

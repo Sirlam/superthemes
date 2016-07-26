@@ -19,3 +19,4 @@ Route::get('login', 'UsersController@login');
 
 Route::get('checkout', 'UsersController@checkout');
 Route::get('wishlist', 'UsersController@wishlist');
+Route::get('contact', 'UsersController@contact');
