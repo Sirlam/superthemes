@@ -23,7 +23,9 @@ $app = new Illuminate\Foundation\Application;
 | given environment, then we will automatically detect it for you.
 |
 */
+$env = $app->detectEnvironment(array(
 
+    'local' => array('SPINACH-PC'),
 $env = $app->detectEnvironment(array(
 
 	'local' => array('homestead'),
