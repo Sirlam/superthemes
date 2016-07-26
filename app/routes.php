@@ -11,7 +11,13 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@index');
+
+//authentication routes
+Route::get('register', 'UsersController@register');
+Route::get('login', 'UsersController@login');
+
+Route::get('checkout', 'UsersController@checkout');
+Route::get('wishlist', 'UsersController@wishlist');
+Route::get('contact', 'UsersController@contact');
+Route::get('product', 'UsersController@product');
