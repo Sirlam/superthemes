@@ -10,4 +10,8 @@ class UsersController extends BaseController
     public function checkout(){
         return View::make('users.checkout');
     }
+
+    public function login(){
+        return View::make('users.login');
+    }
 }

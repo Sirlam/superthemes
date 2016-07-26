@@ -15,5 +15,6 @@ Route::get('/', 'HomeController@index');
 
 //authentication routes
 Route::get('register', 'UsersController@register');
+Route::get('login', 'UsersController@login');
 
 Route::get('checkout', 'UsersController@checkout');
