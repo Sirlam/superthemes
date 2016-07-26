@@ -22,4 +22,8 @@ class UsersController extends BaseController
     public function contact(){
         return View::make('contact');
     }
+
+    public function product(){
+        return View::make('product');
+    }
 }
