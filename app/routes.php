@@ -15,3 +15,5 @@ Route::get('/', 'HomeController@index');
 
 //authentication routes
 Route::get('register', 'UsersController@register');
+
+Route::get('checkout', 'UsersController@checkout');

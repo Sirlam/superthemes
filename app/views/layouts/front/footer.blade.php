@@ -123,7 +123,7 @@ id="myModal">
   </div>
   <div class="modal-footer">
     <button data-dismiss="modal" class="btn">Continue Shoping</button>
-    <button class="btn btn-primary">Place Order</button>
+    <a href="{{url('checkout')}}"> <button class="btn btn-primary">Checkout</button></a>
   </div>
   </div>
 

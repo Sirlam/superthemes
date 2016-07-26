@@ -6,4 +6,8 @@ class UsersController extends BaseController
     {
         return View::make('users.register');
     }
+
+    public function checkout(){
+        return View::make('users.checkout');
+    }
 }

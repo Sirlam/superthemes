@@ -70,7 +70,7 @@
     <h1 class="productname">Register Account</h1>
     <p> If you already have an account with us, please <a href="{{url('login')}}">login</a> here.</p>
 
-     <form class="form-horizontal">
+     <form class="form-horizontal" method="post" enctype="multipart/form-data">
             <h3 class="heading3">Your Personal Details</h3>
             <div class="registerbox">
               <fieldset>
