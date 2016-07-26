@@ -15,6 +15,7 @@
 
           <nav style="height:0" class="nav-collapse collapse">
             <ul class="nav pull-right">
+            <li><a href="{{url('wishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
                 <li><a href="{{url('login')}}"><i class="icon-lock"></i> Login</a></li>
                 <li><a href="{{url('register')}}"><i class="icon-user"></i> Register</a></li>
             </ul>

@@ -14,4 +14,8 @@ class UsersController extends BaseController
     public function login(){
         return View::make('users.login');
     }
+
+    public function wishlist(){
+        return View::make('users.wishlist');
+    }
 }
