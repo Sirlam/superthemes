@@ -26,10 +26,6 @@ $app = new Illuminate\Foundation\Application;
 $env = $app->detectEnvironment(array(
 
     'local' => array('SPINACH-PC'),
-$env = $app->detectEnvironment(array(
-
-	'local' => array('homestead'),
-
 ));
 
 /*
@@ -44,6 +40,7 @@ $env = $app->detectEnvironment(array(
 */
 
 $app->bindInstallPaths(require __DIR__.'/paths.php');
+
 
 /*
 |--------------------------------------------------------------------------

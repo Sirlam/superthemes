@@ -11,13 +11,18 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', array('uses' => 'HomeController@index', 'as' => 'home'));
 
 //authentication routes
-Route::get('register', 'UsersController@register');
-Route::get('login', 'UsersController@login');
+Route::group(array('before' => 'guest'), function()
+{
+Route::get('register', array('uses' => 'UserController@getRegister', 'as' => 'getRegister'));
+Route::get('login', array('uses' => 'UserController@getLogin', 'as' => 'getLogin'));
+    Route::post('register', array('uses' => 'UserController@postRegister', 'as' => 'postRegister'));
+    Route::post('login', array('uses' => 'UserController@postLogin', 'as' => 'postLogin'));
+});
 
-Route::get('checkout', 'UsersController@checkout');
-Route::get('wishlist', 'UsersController@wishlist');
-Route::get('contact', 'UsersController@contact');
-Route::get('product', 'UsersController@product');
+Route::get('checkout', 'UserController@checkout');
+Route::get('wishlist', 'UserController@wishlist');
+Route::get('contact', 'UserController@contact');
+Route::get('product', 'UserController@product');
