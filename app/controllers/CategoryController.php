@@ -1,6 +1,6 @@
 <?php
 
-class Category extends Eloquent
+class CategoryController extends Eloquent
 {
     protected $fillable = array('name');
 
