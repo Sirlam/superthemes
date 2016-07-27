@@ -26,3 +26,6 @@ Route::get('checkout', 'UserController@checkout');
 Route::get('wishlist', 'UserController@wishlist');
 Route::get('contact', 'UserController@contact');
 Route::get('product', 'UserController@product');
+
+//Log Viewer
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

@@ -124,6 +124,7 @@ return array(
         'Intervention\Image\ImageServiceProvider',
         'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
+        'Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider',
 	),
 
 	/*
