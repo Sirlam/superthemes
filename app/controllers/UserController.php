@@ -32,17 +32,16 @@ class UserController extends BaseController
             $user->email = Input::get('email');
             $user->phone_number = Input::get('phone');
             $user->address = Input::get('address');
-            $user->isAdmin = 1;
 
 
 
             if($user->save())
             {
-                return Redirect::route('home')->with('success', 'you registered sucessfully you can now login');
+                return Redirect::route('getLogin')->with('success', 'you registered sucessfully you can now login');
             }
             else
             {
-                return Redirect::route('home')->with('fail', 'an error occured while creating your profile');
+                return Redirect::route('getLogin')->with('fail', 'an error occured while creating your profile');
             }
         }
     }
