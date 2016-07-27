@@ -18,8 +18,10 @@ Route::group(array('before' => 'guest'), function()
 {
 Route::get('register', array('uses' => 'UserController@getRegister', 'as' => 'getRegister'));
 Route::get('login', array('uses' => 'UserController@getLogin', 'as' => 'getLogin'));
+    Route::group(array('before', 'csrf'), function(){
     Route::post('register', array('uses' => 'UserController@postRegister', 'as' => 'postRegister'));
     Route::post('login', array('uses' => 'UserController@postLogin', 'as' => 'postLogin'));
+});
 });
 
 Route::get('checkout', 'UserController@checkout');
