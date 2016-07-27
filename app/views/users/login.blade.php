@@ -2,9 +2,13 @@
 
 @section('body')
 @if (Session::has('success'))
-        <div class="alert alert-success"> {{ Session::get('success') }}</div>
+        <div class="container">
+            <div class="alert alert-success"> {{ Session::get('success') }}</div>
+        </div>
     @elseif (Session::has('fail'))
-        <div class="alert alert-danger"> {{ Session::get('fail') }}</div>
+        <div class="container">
+            <div class="alert alert-danger"> {{ Session::get('fail') }}</div>
+        </div>
     @endif
 <div id="maincontainer">
     <div class="container">
