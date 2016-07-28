@@ -47,7 +47,7 @@ class UserController extends BaseController
     }
     public function postLogin() {
         $validator = Validator::make(Input::all(), array(
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required'
         ));
         if($validator->fails())

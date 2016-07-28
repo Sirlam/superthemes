@@ -10,7 +10,7 @@ class AdminController extends BaseController
     public function postAdminLogin()
     {
         $validator = Validator::make(Input::all(), array(
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required'
         ));
         if ($validator->fails()) {
