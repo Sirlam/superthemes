@@ -22,6 +22,15 @@
     <!--Slider Ends-->
 	<div class="container">
 		<div class="row">
+@if (Session::has('success'))
+        <div class="container">
+            <div class="alert alert-success"> {{ Session::get('success') }}</div>
+        </div>
+    @elseif (Session::has('fail'))
+        <div class="container">
+            <div class="alert alert-danger"> {{ Session::get('fail') }}</div>
+        </div>
+    @endif
         	<!--Sidebar Starts-->
 			<div class="span3">
 				<aside>
