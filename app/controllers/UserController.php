@@ -42,8 +42,6 @@ class UserController extends BaseController
             $user->phone_number = Input::get('phone');
             $user->address = Input::get('address');
 
-
-
             if($user->save())
             {
                 return Redirect::route('getLogin')->with('success', 'you registered successfully you can now login');

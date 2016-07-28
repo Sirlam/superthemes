@@ -21,10 +21,10 @@ class AdminController extends BaseController
                 'email' => Input::get('email'),
                 'password' => Input::get('password')
             ), $remember);
-            if($auth){
+            if($auth && Auth::user()->isAdmin()){
                 return Redirect::intended('/');
             }else{
-                return Redirect::route('getAdminLogin')->with('fail', 'Invalid username and password');
+                return Redirect::route('getAdminLogin')->with('fail', 'You are not an admin');
             }
         }
     }
