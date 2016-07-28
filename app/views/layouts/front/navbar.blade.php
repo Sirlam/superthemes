@@ -16,9 +16,13 @@
           <nav style="height:0" class="nav-collapse collapse">
             <ul class="nav pull-right">
             <li><a href="{{url('wishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
+            @if (Auth::check())
+            <li><a href="{{ URL::route('getLogout') }}"><i class="icon-user"></i>Logout</a></li>
+            @else
                 <li><a href="{{url('login')}}"><i class="icon-lock"></i> Login</a></li>
                 <li><a href="{{url('register')}}"><i class="icon-user"></i> Register</a></li>
-            </ul>
+            @endif
+             </ul>
           </nav>
     </div>
   </div>
@@ -33,9 +37,11 @@
 
         <div class="span8">
           <div class="row">
+          @if(!Auth::check())
             <div class="pull-right logintext">
             Welcome Guest,  you can <a href="{{url('login')}}">login </a>or <a href="{{url('register')}}">create an account</a>
             </div>
+           @endif
           </div>
           <form class="form-search marginnull topsearch pull-right">
             <div class="span6 pull-left">

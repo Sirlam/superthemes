@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration {
             $table->timestamp('last_login');
             $table->string('picture_url');
 			$table->enum('isAdmin', array(0, 1))->default(0);
+			$table->enum('isSeller', array(0, 1))->default(0);
             $table->string('remember_token', 100)->nullable();
 			$table->timestamps();
 		});

@@ -84,22 +84,22 @@ id="myModal">
     <table class="table table-striped">
       <tbody>
         <tr>
-          <th class="image">Image</th>
+         <!-- <th class="image">Image</th>-->
           <th class="name">Product Name</th>
-          <th class="quantity">Quantity</th>
+          <th class="Category">Category</th>-->
           <th class="price">Unit Price</th>
-          <th class="total">Total</th>
+          <!--<th class="total">Total</th>-->
           <th class="quantity">&nbsp;</th>
         </tr>
         <tr>
-          <td class="image"><a href="#"><img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}"  alt="product" title="product"></a>
+          <!--<td class="image"><a href="#"><img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}"  alt="product" title="product"></a>-->
           <td class="name"><a href="#">T-Shirt</a></td>
-          <td class="quantity"><input type="text" class="span1" name="quantity[40]" value="1" size="1"></td>
+          <!--<td class="quantity"><input type="text" class="span1" name="quantity[40]" value="1" size="1"></td>-->
           <td class="price">$120.68</td>
-          <td class="total">$120.68</td>
+          <!--<td class="total">$120.68</td>-->
           <td class="quantity"><a href="#"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
         </tr>
-        <tr>
+        <!--<tr>
           <td class="image"><a href="#"><img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}" alt="product" title="product"></a></td>
           <td class="name"><a href="#">T-Shirt</a></td>
           <td class="quantity"><input type="text" class="span1" name="quantity[40]" value="1" size="1"></td>
@@ -117,7 +117,7 @@ id="myModal">
         </tr>
         <tr>
           <td class="image" colspan="6"><h4 class="pull-right margin-none">Total: $2358</h4></td>
-        </tr>
+        </tr>-->
       </tbody>
     </table>
   </div>

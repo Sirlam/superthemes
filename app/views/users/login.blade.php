@@ -43,7 +43,6 @@
                             {{ Form::token() }}
                     <a href="{{url('remind')}}" class="">Forgotten Password?</a>
                     <p>Don't have an account? <a href="{{url('register')}}">Register here</a> </p>
-                    <br>
                     <button type="submit" class="btn btn-success">Login</button>
                   </fieldset>
                 </form>
