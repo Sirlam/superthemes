@@ -28,7 +28,7 @@ class UserController extends BaseController
             $user = new User();
             $user->lastname = Input::get('lastname');
             $user->firstname = Input::get('firstname');
-            $user->password = Hash::make(Input::get('passwword'));
+            $user->password = Hash::make(Input::get('password'));
             $user->email = Input::get('email');
             $user->phone_number = Input::get('phone');
             $user->address = Input::get('address');
@@ -37,11 +37,11 @@ class UserController extends BaseController
 
             if($user->save())
             {
-                return Redirect::route('getLogin')->with('success', 'you registered sucessfully you can now login');
+                return Redirect::route('getLogin')->with('success', 'you registered successfully you can now login');
             }
             else
             {
-                return Redirect::route('getLogin')->with('fail', 'an error occured while creating your profile');
+                return Redirect::route('getLogin')->with('fail', 'an error occurred while creating your profile');
             }
         }
     }

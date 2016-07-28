@@ -31,3 +31,12 @@ Route::get('product', 'UserController@product');
 
 //Log Viewer
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+
+//Admin Routes
+Route::group(array('before', 'admin'),function() {
+    Route::get('admin', array('uses' => 'AdminController@getAdminLogin', 'as' => 'getAdminLogin'));
+});
+Route::group(array('before', 'csrf'),function(){
+    Route::post('admin', array('uses' => 'AdminController@postAdminLogin', 'as' => 'postAdminLogin'));
+});
+

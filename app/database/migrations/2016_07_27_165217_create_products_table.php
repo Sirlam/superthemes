@@ -7,8 +7,7 @@ class CreateProductsTable extends Migration {
 
 	/**
 	 * Run the migrations.
-	 *'category_id', 'title', 'description', 'old_price', 'new_price',
-    'image', 'upload_link'
+	 *
 	 * @return void
 	 */
 	public function up()
