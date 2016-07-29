@@ -36,12 +36,19 @@ Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 
 
 //Admin Routes
-Route::group(array('before', 'admin'),function() {
-    Route::get('admin', array('uses' => 'AdminController@getAdminLogin', 'as' => 'getAdminLogin'));
+Route::group(array('before', 'auth'),function() {
+    Route::get('admin', array('uses' => 'AdminController@getAdminindex', 'as' => 'getAdminIndex'));
+    Route::get('admin/login', array('uses' => 'AdminController@getAdminLogin', 'as' => 'getAdminLogin'));
+    Route::get('admin/index', array('uses' => 'AdminController@getAdminIndex', 'as' => 'getAdminIndex'));
 });
 Route::group(array('before', 'csrf'),function(){
     Route::post('admin', array('uses' => 'AdminController@postAdminLogin', 'as' => 'postAdminLogin'));
 });
+Route::group(array('before' => 'auth'), function()
+{
+    Route::get('/admin/logout', array('uses' => 'AdminController@getAdminLogout', 'as' => 'getAdminLogout'));
+});
+
 
 Route::group(array('before' => 'auth'), function()
 {
