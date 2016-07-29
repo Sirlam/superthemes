@@ -17,7 +17,9 @@ class HomeController extends BaseController {
 
     public function index()
     {
-        return View::make('home');
+        $groups = ForumGroup::all();
+        $categories = ForumCategory::all();
+        return View::make('home')with;
     }
 
 }
