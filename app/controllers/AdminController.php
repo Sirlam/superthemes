@@ -22,10 +22,20 @@ class AdminController extends BaseController
                 'password' => Input::get('password')
             ), $remember);
             if($auth && Auth::user()->isAdmin()){
-                return Redirect::intended('/');
+                return Redirect::to('admin/index');
             }else{
                 return Redirect::route('getAdminLogin')->with('fail', 'You are not an admin');
             }
         }
+    }
+
+    public function getAdminIndex(){
+        return View::make('admin/index');
+    }
+
+    public function getAdminLogout() {
+        Auth::logout();
+        Session::flush();
+        return Redirect::route('getAdminLogin');
     }
 }
