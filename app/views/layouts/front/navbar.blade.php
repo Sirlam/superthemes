@@ -49,7 +49,8 @@
                 <input type="text" class="span5 search-query search-icon-top pull-right" placeholder="Search a theme here...">
             </div>
             <div class="pull-right ml5">
-                <a data-toggle="modal" href="#myModal" class="btn btn-info pull-right"><i class="icon-shopping-cart"></i> Cart (0)</a>
+            @if (Sizeof(Cart::content()) >=0)
+                <a href="{{ url('cart/index') }}" class="btn btn-info pull-right"><i class="icon-shopping-cart"></i> Cart ({{ Cart::count() }})</a>
             </div>
           </form>
         </div>
