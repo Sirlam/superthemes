@@ -43,12 +43,12 @@
             <div id="collapseOne" class="accordion-body collapse in">
                 <div class="accordion-inner">
                     <form class="form-vertical" action="#" method="post">
-                        <div class="control-group {{ ($errors->has('cat_name')) ? 'has-error' : ''}}">
-                            <label for="cat_name" class="control-label span3">Category Name:</label>
+                        <div class="control-group {{ ($errors->has('name')) ? 'has-error' : ''}}">
+                            <label for="name" class="control-label span3">Category Name:</label>
                                 <div class="controls">
-                                    <input id="cat_name" name="cat_name" type="text" class="span3">
-                                    @if ($errors->has('cat_name'))
-                                        {{ $errors->first('cat_name') }}
+                                    <input id="name" name="name" type="text" class="span3">
+                                    @if ($errors->has('name'))
+                                        {{ $errors->first('name') }}
                                     @endif
                                 </div>
                                 <button type="submit" class="btn btn-success">Add</button>
