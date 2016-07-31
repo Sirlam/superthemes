@@ -1,5 +1,10 @@
 <?php
 class Category extends Eloquent
 {
-    protected $table = 'categories';
+    protected $guarded = array('id');
+
+    public function products()
+    {
+        return $this->hasMany(Product);
+    }
 }

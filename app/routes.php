@@ -20,7 +20,6 @@ Route::get('register', array('uses' => 'UserController@getRegister', 'as' => 'ge
 Route::get('login', array('uses' => 'UserController@getLogin', 'as' => 'getLogin'));
     Route::group(array('before', 'csrf'), function(){
     Route::post('register', array('uses' => 'UserController@postRegister', 'as' => 'postRegister'));
-    Route::get('/admin', array('uses' => 'UserController@getAdmin', 'as' => 'getAdmin'));
     Route::post('/admin', array('uses' => 'UserController@adminRegister', 'as' => 'adminRegister'));
     Route::post('login', array('uses' => 'UserController@postLogin', 'as' => 'postLogin'));
 });
@@ -40,16 +39,20 @@ Route::group(array('before', 'auth'),function() {
     Route::get('admin', array('uses' => 'AdminController@getAdminindex', 'as' => 'getAdminIndex'));
     Route::get('admin/login', array('uses' => 'AdminController@getAdminLogin', 'as' => 'getAdminLogin'));
     Route::get('admin/index', array('uses' => 'AdminController@getAdminIndex', 'as' => 'getAdminIndex'));
+    Route::group(array('before', 'csrf'),function(){
+        Route::get('admin/index/Register', array('uses' => 'AdminController@getAdmin', 'as' => 'getAdmin'));
+        Route::post('admin', array('uses' => 'AdminController@postAdminLogin', 'as' => 'postAdminLogin'));
+    });
 });
-Route::group(array('before', 'csrf'),function(){
-    Route::post('admin', array('uses' => 'AdminController@postAdminLogin', 'as' => 'postAdminLogin'));
-});
+//cart/wishlist routes
+Route::post('/cart', 'CartController@addCart');
+Route::get('/cart', 'CartController@viewCart');
+
+
 Route::group(array('before' => 'auth'), function()
 {
     Route::get('/admin/logout', array('uses' => 'AdminController@getAdminLogout', 'as' => 'getAdminLogout'));
 });
-
-
 Route::group(array('before' => 'auth'), function()
 {
     Route::get('/user/logout', array('uses' => 'UserController@getLogout', 'as' => 'getLogout'));

@@ -73,7 +73,7 @@
   </section> 
         <a id="gotop" href="#">Back to top</a>
 </footer>
-<div aria-hidden="false" aria-labelledby="myModalLabel"
+<!--<div aria-hidden="false" aria-labelledby="myModalLabel"
 role="dialog" tabindex="-1" class="modal hide fade in"
 id="myModal">
   <div class="modal-header">
@@ -81,22 +81,24 @@ id="myModal">
     <h3 id="myModalLabel">My Cart</h3>
   </div>
   <div class="modal-body">
+
     <table class="table table-striped">
       <tbody>
         <tr>
-         <!-- <th class="image">Image</th>-->
+          <th class="image">Image</th>
           <th class="name">Product Name</th>
-          <th class="Category">Category</th>-->
+          <th class="Category">Category</th>
           <th class="price">Unit Price</th>
-          <!--<th class="total">Total</th>-->
+          <!--<th class="total">Total</th>
           <th class="quantity">&nbsp;</th>
         </tr>
+        $cart = Count::content();
         <tr>
-          <!--<td class="image"><a href="#"><img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}"  alt="product" title="product"></a>-->
-          <td class="name"><a href="#">T-Shirt</a></td>
-          <!--<td class="quantity"><input type="text" class="span1" name="quantity[40]" value="1" size="1"></td>-->
-          <td class="price">$120.68</td>
-          <!--<td class="total">$120.68</td>-->
+          <!--<td class="image"><a href="#"><img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}"  alt="product" title="product"></a>
+          <td class="name"><a href="#">ice cream</a></td>
+          <td class="Category"><a href="#">kola nut
+          <td class="price"> insert </td>
+          <!--<td class="total">$120.68</td>
           <td class="quantity"><a href="#"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
         </tr>
         <!--<tr>
