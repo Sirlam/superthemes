@@ -48,6 +48,19 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('admin', function()
+{
+    if (!(Auth::check() && Auth::user()->isAdmin()))
+    {
+        if(Request::ajax())
+        {
+            Return Response::make('Unautorized', 401);
+        }
+        else{
+            Return Redirect::route('home');
+        }
+    }
+});
 
 Route::filter('auth.basic', function()
 {

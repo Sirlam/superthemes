@@ -31,7 +31,7 @@
 </head>
 <body>
 <div>
-@if (Auth::check())
+@if (Auth::check() && Auth::user()->isAdmin()))
 <div class="container">
     <div class="accordion" id="accordion2">
         <div class="accordion-group">
@@ -157,11 +157,11 @@
         </div>
     </div>
     <a href="{{URL::route('getAdminLogout')}}" class="pull-right">Logout</a>
-</div>
-@else
+    @else
     <div class="container">
-        <a class="btn-link" href="{{ URL::route('getAdminLogin') }}">Login first</a>
+        <button class="btn btn-large"> <a href="{{URL::route('home')}}">Unauthorized, Get me out of here</a></button>
     </div>
+</div>
 @endif
 </div>
 {{HTML::script("js/jquery.js")}}

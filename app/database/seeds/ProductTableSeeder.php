@@ -1,4 +1,4 @@
-<?php
+q<?php
 use Faker\Factory as Faker;
 
 class ProductTableSeeder extends Seeder {

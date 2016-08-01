@@ -53,7 +53,7 @@
            			 <ul class="bestseller">
              			 <li>
                             <img width="50" height="50" src="{{url($product->image)}}" alt="product" title="product">
-                            <a class="productname" href="{{url('product')}}"> {{ $product->title }}</a>
+                            <a class="productname" href="{{route('getProduct', $product->id)}}"> {{ $product->title }}</a>
                             @foreach($categories as $category)
                             @if ($category->id ==$product->category_id)
                             <span class="procategory">{{ $category->name }}</span>

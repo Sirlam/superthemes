@@ -10,6 +10,7 @@
         <li><a href="#">Home</a><span class="divider">/</span></li>
         <li class="active">Product</li>
       </ul>
+      @foreach($products as $product)
       <!-- Product Details-->
       <div class="row">
         <div class="span5">
@@ -172,7 +173,7 @@
           </div>
         </div>
       </div>
-
+      @endforeach
       <!-- Product Description tab & comments-->
 
     </div>
