@@ -20,11 +20,6 @@
                 <img alt="" src="{{$product->image}}">
               </a>
             </li>
-            <li class="span5">
-              <a  rel="position: 'inside' , showTitle: false, adjustX:-4, adjustY:-4" class="thumbnail cloud-zoom" href="{{$product->image}}">
-                <img alt="" src="{{$product->image}}">
-              </a>
-            </li>
           </ul>
 
           <ul class="thumbnails mainimage">
