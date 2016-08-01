@@ -7,13 +7,13 @@ class ProductController extends BaseController
 
     }
 
-    public function getProduct()
+    public function getProduct($id)
     {
-        $products = Product::all();
+        $product = Product::find($id);
         $categories = Category::all();
         $users = User::all();
         return View::make('product')
-            ->with('products', $products)
+            ->with('product', $product)
             ->with('categories', $categories)
             ->with('users', $users);
     }
