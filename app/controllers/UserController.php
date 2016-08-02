@@ -22,8 +22,8 @@ class UserController extends BaseController
             'password' => 'required|min:6',
             'confirm_password' => 'required|same:password',
             'email' => 'required|unique:users|min:10',
+            'isSeller' => 'required',
             'phone' => 'required|min:8',
-            'address' => 'required'
         ));
         if($validate->fails())
         {
@@ -36,6 +36,7 @@ class UserController extends BaseController
             $user->firstname = Input::get('firstname');
             $user->password = Hash::make(Input::get('password'));
             $user->email = Input::get('email');
+            $user->isSeller = Input::get('user_type');
             $user->phone_number = Input::get('phone');
             $user->address = Input::get('address');
 
@@ -127,8 +128,5 @@ class UserController extends BaseController
     }
     public function contact(){
         return View::make('contact');
-    }
-    public function product(){
-        return View::make('product');
     }
 }
