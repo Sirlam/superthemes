@@ -14,13 +14,13 @@
                 <div class="alert alert-danger"> {{ Session::get('fail') }}</div>
             </div>
         @endif
-        
+
         <ul class="nav nav-tabs" id="myTab">
-            <li class="active"><a href="#add_theme">Add theme</a> </li>
-            <li><a href="#view_themes">View my themes</a> </li>
+            <li class="active"><a href="#view_themes">View my themes</a> </li>
+            <li><a href="#add_theme">Add theme</a> </li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane active" id="add_theme">
+            <div class="tab-pane" id="add_theme">
                 <div class="span8 offset3">
                 <h2>Add a theme</h2>
                 <form class="form-horizontal" method="post" action="{{URL::route('postProduct')}}" enctype="multipart/form-data">
@@ -97,8 +97,38 @@
                 </div>
             </div>
 
-            <div class="tab-pane" id="view_themes">
-                <h2>View my themes</h2>
+            <div class="tab-pane active" id="view_themes">
+                <h2>My themes</h2>
+                <table class="table table-striped table-bordered">
+                <tr>
+                    <th class="image">Image</th>
+                    <th class="name">Theme Title</th>
+                    <th class="model">Description</th>
+                    <th class="price">Old Price</th>
+                    <th class="price">New Price</th>
+                    <th class="categorytitle">Category</th>
+                    <th class="total"> Action </th>
+                </tr>
+                @foreach($products as $product)
+                    @if(Auth::id() == $product->user_id)
+                <tr>
+                    <th class="image"><img width="30" height="30" alt="Theme" src="{{$product->image}}"> </th>
+                    <th class="name">{{$product->title}}</th>
+                    <th class="model">{{$product->description}}</th>
+                    <th class="price">{{$product->old_price}}</th>
+                    <th class="price">{{$product->new_price}}</th>
+                    @foreach($categories as $category)
+                        @if($category->id == $product->category_id)
+                        <th class="categorytitle">
+                            {{$category->name}}
+                        </th>
+                        @endif
+                    @endforeach
+                    <th class="total"> <button type="button" class="btn btn-danger">Delete</button> </th>
+                </tr>
+                    @endif
+                @endforeach
+                </table>
             </div>
         </div>
     </div>
