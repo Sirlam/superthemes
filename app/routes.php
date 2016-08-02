@@ -54,6 +54,9 @@ Route::get('product/{id}', array('uses' => 'ProductController@getProduct', 'as' 
 Route::get('product/add', array('uses' => 'ProductController@addProduct', 'as' => 'addProduct'));
 Route::post('product/add', array('uses' => 'ProductController@postProduct', 'as' => 'postProduct'));
 
+//Dashboard routes
+Route::get('dashboard', array('uses' => 'DashboardController@getDashboard', 'as' => 'getDashboard'));
+
 //User Logout
 Route::group(array('before' => 'auth'), function () {
 

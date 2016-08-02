@@ -21,7 +21,7 @@
             <li><a href="{{URL::route('getAdminIndex')}}"><i class="icon-lock"></i> Admin BackEnd</a></li>
             @endif
             @if (Auth::check() && Auth::user()->isSeller())
-            <li><a href="#"><i class="icon-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{URL::route('getDashboard')}}"><i class="icon-dashboard"></i> Dashboard</a></li>
             @endif
             @if (Auth::check())
             <li><a href="{{ URL::route('getLogout') }}"><i class="icon-user"></i> Logout</a></li>
