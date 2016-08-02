@@ -151,6 +151,7 @@ id="myModal">
   {{HTML::script("js/respond.min.js")}}
   {{HTML::script("js/cloud-zoom.1.0.2.js")}}
   {{HTML::script("js/jquery.nivo.slider.js")}}
+  {{HTML::script("js/app.js")}}
 
 
   <script defer src="js/custom.js"></script>

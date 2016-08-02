@@ -51,6 +51,7 @@ Route::post('cart/index', array('uses' => 'CartController@cartRemove', 'as' => '
 
 //Product routes
 Route::get('product/{id}', array('uses' => 'ProductController@getProduct', 'as' => 'getProduct'));
+Route::get('product/delete/{id}', array('uses' => 'ProductController@deleteProduct', 'as' => 'deleteProduct'));
 Route::get('product/add', array('uses' => 'ProductController@addProduct', 'as' => 'addProduct'));
 Route::group(array('before', 'csrf'), function(){
     Route::post('product/add', array('uses' => 'ProductController@postProduct', 'as' => 'postProduct'));

@@ -3,7 +3,7 @@
 @section('body')
 
 <div id="maincontainer">
-@if (Auth::check() && Auth::user()->isSeller()))
+@if (Auth::check() && Auth::user()->isSeller())
     <div class="container">
     @if (Session::has('success'))
             <div class="container">
@@ -124,7 +124,9 @@
                         </th>
                         @endif
                     @endforeach
-                    <th class="total"> <button type="button" class="btn btn-danger">Delete</button> </th>
+                    <th class="total">
+                     <a id="{{$product->id}}" href="#del_theme_modal" class="btn btn-danger btn-xs delete_theme" data-toggle="modal">Delete</a>
+                      </th>
                 </tr>
                     @endif
                 @endforeach
@@ -138,4 +140,18 @@
 </div>
 @endif
 </div>
+<div class="modal hide fade" id="del_theme_modal" tabindex="-1" role="dialog" aria-labelledby="del_theme_modal_label" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3 id="del_theme_modal_label">Delete</h3>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure?</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">No</button>
+        <a type="button" class="btn btn-primary" id="btn_delete_theme">Yes</a>
+    </div>
+</div>
+
 @stop

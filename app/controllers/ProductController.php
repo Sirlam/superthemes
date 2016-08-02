@@ -12,12 +12,9 @@ class ProductController extends BaseController
             'image' => 'required|image|mimes:jpeg,jpg,bmp,gif,png',
             'file' => 'required|mimes:zip,rar',
         ));
-        if($validate->fails())
-        {
+        if ($validate->fails()) {
             return Redirect::route('getDashboard')->withErrors($validate)->withInput();
-        }
-        else
-        {
+        } else {
             $Product = new Product();
             $Product->category_id = Input::get('category_id');
             $Product->user_id = Auth::id();
@@ -27,23 +24,20 @@ class ProductController extends BaseController
             $Product->new_price = Input::get('new_price');
 
             $image = Input::file('image');
-            $imagename = time()."-".$image->getClientOriginalName();
-            Image::make($image->getRealPath())->resize(468,249)->save(public_path().'/products/img/'.$imagename);
-            $Product->image = 'products/img/'.$imagename;
+            $imagename = time() . "-" . $image->getClientOriginalName();
+            Image::make($image->getRealPath())->resize(468, 249)->save(public_path() . '/products/img/' . $imagename);
+            $Product->image = 'products/img/' . $imagename;
 
             $file = Input::file('file');
-            $filename = time()."-".$file->getClientOriginalName();
-            $file->move(public_path().'/products/file/'.$filename, $filename);
-            $Product->upload_link = 'products/file/'.$filename;
+            $filename = time() . "-" . $file->getClientOriginalName();
+            $file->move(public_path() . '/products/file/' . $filename, $filename);
+            $Product->upload_link = 'products/file/' . $filename;
 
             $Product->save();
-            if($Product->save())
-            {
+            if ($Product->save()) {
                 return Redirect::route('getDashboard')
                     ->with('success', 'Theme added successfully');
-            }
-            else
-            {
+            } else {
                 return Redirect::route('getDashboard')
                     ->with('fail', 'An error occurred while adding theme')
                     ->withErrors($validate)
@@ -61,5 +55,20 @@ class ProductController extends BaseController
             ->with('product', $product)
             ->with('categories', $categories)
             ->with('users', $users);
+    }
+
+    public function deleteProduct($id)
+    {
+        $product = Product::find($id);
+        if ($product == null) {
+            return Redirect::route('getDashboard') . with('fail', 'That theme doesn\'t exist');
+        }
+
+        $delProduct = $product->delete();
+        if ($delProduct) {
+            return Redirect::route('getDashboard') . with('success', 'The theme was deleted');
+        } else {
+            return Redirect::route('getDashboard') . with('fail', 'An error occurred, please try again later');
+        }
     }
 }
