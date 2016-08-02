@@ -52,7 +52,9 @@ Route::post('cart/index', array('uses' => 'CartController@cartRemove', 'as' => '
 //Product routes
 Route::get('product/{id}', array('uses' => 'ProductController@getProduct', 'as' => 'getProduct'));
 Route::get('product/add', array('uses' => 'ProductController@addProduct', 'as' => 'addProduct'));
-Route::post('product/add', array('uses' => 'ProductController@postProduct', 'as' => 'postProduct'));
+Route::group(array('before', 'csrf'), function(){
+    Route::post('product/add', array('uses' => 'ProductController@postProduct', 'as' => 'postProduct'));
+});
 
 //Dashboard routes
 Route::get('dashboard', array('uses' => 'DashboardController@getDashboard', 'as' => 'getDashboard'));

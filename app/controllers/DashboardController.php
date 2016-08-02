@@ -3,7 +3,8 @@
 class DashboardController extends BaseController
 {
     public function getDashboard(){
-        return View::make('users.dashboard');
+        $categories = Category::all();
+        return View::make('users.dashboard')->with('categories', $categories);
     }
 
 }

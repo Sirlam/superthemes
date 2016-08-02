@@ -102,7 +102,7 @@
       @endforeach
           <div class="thumbnail">
             <span class="sale tooltip-test" data-original-title="">Featured</span>
-            <a href="{{url('product')}}"><span><span><img alt="" src="{{url($product->image)}}" width="240"></span></span> </a>
+            <a href="{{url('product/'.$product->id)}}"><span><span><img alt="" src="{{url($product->image)}}" width="240"></span></span> </a>
             <div class="caption">
               <div class="price pull-left">
               @if($product->old_price!== null)

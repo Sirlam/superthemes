@@ -123,11 +123,13 @@ id="myModal">
       </tbody>
     </table>
   </div>
+  <!--
   <div class="modal-footer">
     <button data-dismiss="modal" class="btn">Continue Shoping</button>
     <a href="{{url('checkout')}}"> <button class="btn btn-primary">Checkout</button></a>
   </div>
   </div>
+  -->
 
   <!-- Placed at the end of the document so the pages load faster -->
   {{HTML::script("js/jquery.js")}}
