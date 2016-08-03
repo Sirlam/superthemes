@@ -99,9 +99,10 @@
 
             <div class="tab-pane active" id="view_themes">
                 <h2>My themes</h2>
+                <div class="table-div">
                 <table class="table table-striped table-bordered">
                 <tr>
-                    <th class="image">Image</th>
+                    <th class="image"></th>
                     <th class="name">Theme Title</th>
                     <th class="model">Description</th>
                     <th class="price">Old Price</th>
@@ -131,6 +132,7 @@
                     @endif
                 @endforeach
                 </table>
+                </div>
             </div>
         </div>
     </div>
