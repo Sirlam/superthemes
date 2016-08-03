@@ -15,9 +15,12 @@
 
           <nav style="height:0" class="nav-collapse collapse">
             <ul class="nav pull-right">
-            <li><a href="{{url('wishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
+            <li><a href="{{URL::route('getWishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
+            @if(Auth::check() && Auth::user()->isAdmin())
+            <li><a href="{{ URL::route('getAdmin') }}"><i class="icon-user"></i> Register Admin</a></li>
+            @endif
             @if (Auth::check())
-            <li><a href="{{ URL::route('getLogout') }}"><i class="icon-user"></i>Logout</a></li>
+            <li><a href="{{ URL::route('getLogout') }}"><i class="icon-user"></i> Logout</a></li>
             @else
                 <li><a href="{{url('login')}}"><i class="icon-lock"></i> Login</a></li>
                 <li><a href="{{url('register')}}"><i class="icon-user"></i> Register</a></li>
@@ -30,7 +33,6 @@
   <div class="header-white">
     <div class="container">
       <div class="row">
-
         <div class="span4">
           <a href="{{url('/')}}" class="logo"><img title="Super Themes" alt="Super Themes" src="{{url('images/logo.png')}}"></a>
         </div>
@@ -56,18 +58,17 @@
         </div>
       </div>
     </div>
-
+@endif
     <!-- Navigation Start -->
     <div  id="categorymenu">
       <div class="container">
         <nav class="subnav">
           <ul class="nav-pills categorymenu">
             <li><a class="active" href="{{url('/')}}"><i class="icon-home"></i> Home</a></li>
-            <li><a href="{{url('wordpress')}}">WordPress</a></li>
-            <li><a href="{{url('bootstrap')}}">Bootstrap</a></li>
-            <li><a href="{{url('joomla')}}">Joomla</a></li>
-            <li><a href="{{url('drupal')}}">Drupal</a></li>
-            <li><a href="{{url('blogger')}}">Blogger</a></li>
+            <?php $categories = Category::all(); ?>
+            @foreach($categories as $category)
+            <li><a href="{{url('category/'.$category->id)}}">{{ $category->name }}</a></li>
+            @endforeach
             <li><a href="{{url('contact')}}">Contact</a></li>
             <li><a href="{{url('blog')}}">Blog</a></li>
           </ul>

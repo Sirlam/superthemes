@@ -1,7 +1,28 @@
 @charset "utf-8";
 /* CSS Document */
 /* ------------ Reset ------------ */
+#pagination {
+    height: 50px;
+    line-height: 50px;
+    margin-left: 230px;
+}
 
+#pagination ul {
+    list-style: none;
+}
+
+#pagination li {
+    display: inline;
+    margin-right: 10px;
+}
+
+#pagination a:link, #pagination a:visited {
+    color: #5daad0;
+    text-decoration: none;
+}
+#center {
+    text-align: center;
+}
 body {
     font-family: 'Open Sans', calibri, Arial, Helvetica, sans-serif;
     font-size: 13px;

@@ -5,7 +5,7 @@
 <!--Content starts-->
 <div id="maincontainer">
 	<!--Slider Starts-->
-	<section class="slider">
+	<!--<section class="slider">
 		<div class="container">
 			<div class="slider-wrapper theme-default">
 				<div id="slider" class="nivoSlider">
@@ -46,18 +46,18 @@
 				<aside>
        			 <h1 class="headingfull"><span>Best Seller</span></h1>
           			<div class="sidewidt">
-          			@foreach ($products as $product)
-                      @if ($product->id >= 3 && $product->id <= 5)
+          			@foreach ($prods as $prod)
+                      @if ($prod->id >= 3 && $prod->id <= 5)
            			 <ul class="bestseller">
              			 <li>
-                            <img width="50" height="50" src="{{url($product->image)}}" alt="product" title="product">
-                            <a class="productname" href="{{url('product')}}"> {{ $product->title }}</a>
+                            <img width="50" height="50" src="{{url($prod->image)}}" alt="product" title="product">
+                            <a class="productname" href="{{url('product')}}"> {{ $prod->title }}</a>
                             @foreach($categories as $category)
-                            @if ($category->id ==$product->category_id)
+                            @if ($category->id ==$prod->category_id)
                             <span class="procategory">{{ $category->name }}</span>
                             @endif
                             @endforeach
-                            <span class="price">{{ $product->price }}</span>
+                            <span class="price">{{ $prod->price }}</span>
                           </li>
                          <!-- <li>
                             <img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}" alt="product" title="product">
@@ -71,9 +71,9 @@
                             <span class="procategory">Blogger</span>
                             <span class="price">$250</span>
                           </li>-->
+                          @endif
+                          @endforeach
                         </ul>
-                        @endif
-                        @endforeach
                       </div>
                       </aside>
 				<aside>
@@ -87,11 +87,10 @@
             <div class="span9">
   <!-- Featured Product-->
   <section id="featured">
-    <h1 class="headingfull" id="center"><span>Featured Products</span></h1>
+    <h1 class="headingfull" id="center"><span>{{ $cat->name }} Category</span></h1>
     <div class="sidewidt">
       <ul class="thumbnails">
           @foreach ($products as $product)
-              @if ($product->id >= 7 && $product->id <= 12)
         <li class="span3">
       @foreach($users as $user)
         @if ($user->id ==$product->user_id)
@@ -135,7 +134,6 @@
             </div>
           </div>
         </li>
-        @endif
         @endforeach
         <!--<li class="span3">
           By<a href="#"> design_spot</a>
@@ -271,6 +269,9 @@
           </div>
         </li>-->
       </ul>
+      <div id="pagination">
+              {{ $products->links() }}
+          </div>
     </div>
   </section>
 </div>

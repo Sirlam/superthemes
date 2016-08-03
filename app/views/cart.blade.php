@@ -15,7 +15,7 @@
             <table class="table table-striped table-bordered">
               <tbody>
               <tr>
-              <!-- <td class="image"><a href="#"><img width="30" height="30" src="{{url('images/prodcut-40x40.jpg')}}" alt="product" title="product"></a></td>-->
+              <th class="image">Image</th>
                <th class="name"><a href="#">Product Name</a></th>
                <th class="model">Product Category</th>
                <!-- <td class="quantity">In Stock </td>-->
@@ -26,13 +26,17 @@
               @if (sizeof(Cart::content())>0)
                @foreach (Cart::content() as $item)
               <tr>
-                <!--<th class="image">Image</th>-->
+               <td class="image"><a href="#"><img width="30" height="30" src="{{url($item->product->image)}}" alt="product" title="product"></a></td>
                 <td class="name">{{ $item->product->title }}</td>
                 <td class="model">{{ $item->name }}</td>
                 <!--<th class="quantity">Stock</th>-->
                 <td class="price">{{ $item->price }}</td>
-                <td class="quantity"><a href="#"><img alt="" src="{{url('images/remove.png')}}" id="remove" data-original-title="Remove" class="tooltip-test"></a></td>
-                        </tr>
+                 <form method="post" action="{{URL::route('removeCart')}}">
+                 <input type="hidden" name="product_id" value="{{ $item->rowid }}">
+                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                 <td class="total"><a class="btn" href="#">Remove Item</a>
+                 <a href="{{ URL::route('removeCart') }}"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
+                  </form>
               </tr>
               @endforeach
               @endif
@@ -82,7 +86,8 @@
                   <a href="#"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
               </tr>-->
             </tbody></table>
-            <a class="btn btn-success pull-right" href="{{url('/')}}">Continue Shopping</a>
+    <a href="{{url('checkout')}}"> <button class="btn btn-primary pull-right">Checkout</button></a>
+     <a href=""></a> <button class="btn pull-right">Continue Shoping</button> </a>
           </div>
     </div>
   </section>

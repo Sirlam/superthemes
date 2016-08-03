@@ -8,9 +8,6 @@ class CartController extends BaseController
         $price = Input::get('product_price');*/
         $products = Product::find(Input::get('product_id'));
         $category = Category::find(Input::get('category_id'));
-
-
-
         Cart::associate('Product')->add(array('id' => $products->id, 'name' => $category->name, 'qty' => 1, 'price' => $products->new_price,));
         return Redirect::route('home')->with('success','Item was added to your cart!');
     }
@@ -19,9 +16,11 @@ class CartController extends BaseController
         $categories = Category::all();
         return View::make('cart');
     }
-    public function destroy($id)
+
+    public function cartRemove()
     {
-        Cart::remove($id);
-        return redirect('cart')->withSuccessMessage('Item has been removed!');
+        $rowId =  Input::get('product_id');
+        Cart::remove($rowId);
+        return Redirect::route('viewCart')->withSuccessMessage('Item has been removed!');
     }
 }

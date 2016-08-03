@@ -6,12 +6,12 @@ class AdminController extends BaseController
     {
         return View::make('admin.admin');
     }
-    public function getAdminLogin()
+   /* public function getAdminLogin()
     {
         return View::make('admin.login');
-    }
+    }*/
 
-    public function postAdminLogin()
+   /* public function postAdminLogin()
     {
         $validator = Validator::make(Input::all(), array(
             'email' => 'required|email',
@@ -31,7 +31,7 @@ class AdminController extends BaseController
                 return Redirect::route('getAdminLogin')->with('fail', 'You are not an admin');
             }
         }
-    }
+    }*/
 
     public function getAdminIndex(){
         return View::make('admin/index');
@@ -60,7 +60,7 @@ class AdminController extends BaseController
         }
         if($validate->fails())
         {
-            return Redirect::route('getRegister')->withErrors($validate)->withInput();
+            return Redirect::route('getAdmin')->withErrors($validate)->withInput();
         }
         else
         {
@@ -77,11 +77,11 @@ class AdminController extends BaseController
 
             if($user->save())
             {
-                return Redirect::route('getLogin')->with('success', 'you registered sucessfully you can now login');
+                return Redirect::route('home')->with('success', 'you registered sucessfully you can now login');
             }
             else
             {
-                return Redirect::route('getLogin')->with('fail', 'an error occured while creating your profile');
+                return Redirect::route('getAdmin')->with('fail', 'an error occured while creating your profile');
             }
         }
     }
