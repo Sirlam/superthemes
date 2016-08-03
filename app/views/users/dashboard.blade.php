@@ -102,7 +102,7 @@
                 <div class="table-div">
                 <table class="table table-striped table-bordered">
                 <tr>
-                    <th class="image"></th>
+                    <th class="image">Image</th>
                     <th class="name">Theme Title</th>
                     <th class="model">Description</th>
                     <th class="price">Old Price</th>
