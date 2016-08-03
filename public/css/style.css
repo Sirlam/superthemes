@@ -3067,3 +3067,8 @@ select, input[type="file"] {
         padding: 10px 5px
     }
 }
+
+.table-div{
+    max-height: 500px;
+    overflow: auto;
+}

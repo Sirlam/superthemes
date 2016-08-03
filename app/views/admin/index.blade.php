@@ -31,7 +31,7 @@
 </head>
 <body>
 <div>
-@if (Auth::check())
+@if (Auth::check() && Auth::user()->isAdmin()))
 <div class="container">
     <div class="accordion" id="accordion2">
         <div class="accordion-group">
@@ -43,12 +43,12 @@
             <div id="collapseOne" class="accordion-body collapse in">
                 <div class="accordion-inner">
                     <form class="form-vertical" action="#" method="post">
-                        <div class="control-group {{ ($errors->has('cat_name')) ? 'has-error' : ''}}">
-                            <label for="cat_name" class="control-label span3">Category Name:</label>
+                        <div class="control-group {{ ($errors->has('name')) ? 'has-error' : ''}}">
+                            <label for="name" class="control-label span3">Category Name:</label>
                                 <div class="controls">
-                                    <input id="cat_name" name="cat_name" type="text" class="span3">
-                                    @if ($errors->has('cat_name'))
-                                        {{ $errors->first('cat_name') }}
+                                    <input id="name" name="name" type="text" class="span3">
+                                    @if ($errors->has('name'))
+                                        {{ $errors->first('name') }}
                                     @endif
                                 </div>
                                 <button type="submit" class="btn btn-success">Add</button>
@@ -157,11 +157,11 @@
         </div>
     </div>
     <a href="{{URL::route('getAdminLogout')}}" class="pull-right">Logout</a>
-</div>
-@else
+    @else
     <div class="container">
-        <a class="btn-link" href="{{ URL::route('getAdminLogin') }}">Login first</a>
+        <button class="btn btn-large"> <a href="{{URL::route('home')}}">Unauthorized, Get me out of here</a></button>
     </div>
+</div>
 @endif
 </div>
 {{HTML::script("js/jquery.js")}}

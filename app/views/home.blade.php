@@ -51,7 +51,7 @@
            			 <ul class="bestseller">
              			 <li>
                             <img width="50" height="50" src="{{url($product->image)}}" alt="product" title="product">
-                            <a class="productname" href="{{url('product')}}"> {{ $product->title }}</a>
+                            <a class="productname" href="{{url('product/'.$product->id)}}"> {{ $product->title }}</a>
                             @foreach($categories as $category)
                             @if ($category->id ==$product->category_id)
                             <span class="procategory">{{ $category->name }}</span>
@@ -100,7 +100,7 @@
       @endforeach
           <div class="thumbnail">
             <span class="sale tooltip-test" data-original-title="">Featured</span>
-            <a href="{{url('product')}}"><span><span><img alt="" src="{{url($product->image)}}" width="240"></span></span> </a>
+            <a href="{{url('product/'.$product->id)}}"><span><span><img alt="" src="{{url($product->image)}}" width="240"></span></span> </a>
             <div class="caption">
               <div class="price pull-left">
               @if($product->old_price!== null)

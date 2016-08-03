@@ -68,7 +68,7 @@
 
   <section id="featured">
     <h1 class="productname">Register Account</h1>
-    <p> If you already have an account with us, please <a href="{{url('postLogin')}}">login</a> here.</p>
+    <p> If you already have an account with us, please <a href="{{url('Login')}}">login</a> here.</p>
 
      <form class="form-horizontal" method="post" action="{{ URL::route('postRegister')  }}" enctype="multipart/form-data">
             <h3 class="heading3">Your Personal Details</h3>
@@ -111,7 +111,7 @@
                   </div>
                 </div>
                 <div class="control-group {{ ($errors->has('address')) ? 'has-error' : ''}}">
-                  <label for="address" class="control-label"> Address:</label>
+                  <label for="address" class="control-label">Address:</label>
                   <div class="controls">
                     <textarea id="address" name="address" rows="5" class="input-xlarge"></textarea>
                     @if ($errors->has('address'))
@@ -119,6 +119,20 @@
                             @endif
                   </div>
                 </div>
+                <div class="control-group">
+                  <label class="control-label"><span class="red">*</span> Account type:</label>
+                  <div class="controls">
+                    <label for="isBuyer" class="checkbox inline">
+                        <input type="radio" id="isBuyer" name="user_type" value="0" checked>
+                        Regular User
+                    </label>
+                    <label for="isSeller" class="checkbox inline">
+                        <input type="radio" id="isSeller" name="user_type" value="1">
+                        Theme Seller
+                    </label>
+                  </div>
+                </div>
+
               </fieldset>
             </div>
             <hr>

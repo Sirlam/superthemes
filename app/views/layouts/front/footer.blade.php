@@ -123,11 +123,13 @@ id="myModal">
       </tbody>
     </table>
   </div>
+  <!--
   <div class="modal-footer">
     <button data-dismiss="modal" class="btn">Continue Shoping</button>
     <a href="{{url('checkout')}}"> <button class="btn btn-primary">Checkout</button></a>
   </div>
   </div>
+  -->
 
   <!-- Placed at the end of the document so the pages load faster -->
   {{HTML::script("js/jquery.js")}}
@@ -149,6 +151,7 @@ id="myModal">
   {{HTML::script("js/respond.min.js")}}
   {{HTML::script("js/cloud-zoom.1.0.2.js")}}
   {{HTML::script("js/jquery.nivo.slider.js")}}
+  {{HTML::script("js/app.js")}}
 
 
   <script defer src="js/custom.js"></script>

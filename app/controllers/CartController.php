@@ -19,7 +19,7 @@ class CartController extends BaseController
 
     public function cartRemove()
     {
-        $rowId =  Input::get('product_id');
+        $rowId = Input::get('product_id');
         Cart::remove($rowId);
         return Redirect::route('viewCart')->withSuccessMessage('Item has been removed!');
     }

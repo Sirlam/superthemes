@@ -15,9 +15,18 @@
 
           <nav style="height:0" class="nav-collapse collapse">
             <ul class="nav pull-right">
+
             <li><a href="{{URL::route('getWishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
             @if(Auth::check() && Auth::user()->isAdmin())
             <li><a href="{{ URL::route('getAdmin') }}"><i class="icon-user"></i> Register Admin</a></li>
+
+            <li><a href="{{url('wishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
+            @if (Auth::check() && Auth::user()->isAdmin())
+            <li><a href="{{URL::route('getAdmin')}}"><i class="icon-heart"></i> Register Admin</a></li>
+            <li><a href="{{URL::route('getAdminIndex')}}"><i class="icon-lock"></i> Admin BackEnd</a></li>
+            @endif
+            @if (Auth::check() && Auth::user()->isSeller())
+            <li><a href="{{URL::route('getDashboard')}}"><i class="icon-dashboard"></i> Dashboard</a></li>
             @endif
             @if (Auth::check())
             <li><a href="{{ URL::route('getLogout') }}"><i class="icon-user"></i> Logout</a></li>
@@ -53,6 +62,7 @@
             <div class="pull-right ml5">
             @if (Sizeof(Cart::content()) >=0)
                 <a href="{{ url('cart/index') }}" class="btn btn-info pull-right"><i class="icon-shopping-cart"></i> Cart ({{ Cart::count() }})</a>
+            @endif
             </div>
           </form>
         </div>

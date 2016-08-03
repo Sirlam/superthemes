@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration {
             $table->string('firstname', 50);
             $table->string('lastname', 50);
             $table->string('phone_number', 50);
-            $table->Text('address', 100);
+            $table->Text('address', 100)->nullable();
             $table->timestamp('last_login');
             $table->string('picture_url');
 			$table->enum('isAdmin', array(0, 1))->default(0);
