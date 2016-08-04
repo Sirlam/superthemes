@@ -25,13 +25,13 @@ class ProductController extends BaseController
 
             $image = Input::file('image');
             $imagename = time() . "-" . $image->getClientOriginalName();
-            Image::make($image->getRealPath())->resize(468, 249)->save(public_path() . '/products/img/' . $imagename);
+            Image::make($image->getRealPath())->resize(640, 480)->save(public_path() . '/products/img/' . $imagename);
             $Product->image = 'products/img/' . $imagename;
 
             $file = Input::file('file');
             $filename = time() . "-" . $file->getClientOriginalName();
             $file->move(public_path() . '/products/file/' . $filename, $filename);
-            $Product->upload_link = 'products/file/' . $filename;
+            $Product->upload_link = 'products/file/' . $filename . '/' . $filename;
 
             $Product->save();
             if ($Product->save()) {
@@ -60,15 +60,12 @@ class ProductController extends BaseController
     public function deleteProduct($id)
     {
         $product = Product::find($id);
-        if ($product == null) {
-            return Redirect::route('getDashboard') . with('fail', 'That theme doesn\'t exist');
+        if ($product) {
+            File::delete('public/'.$product->image);
+            File::delete('public/'.$product->upload_link);
+            $product->delete();
+            return Redirect::route('getDashboard') . with('success', 'That theme was deleted');
         }
-
-        $delProduct = $product->delete();
-        if ($delProduct) {
-            return Redirect::route('getDashboard') . with('success', 'The theme was deleted');
-        } else {
-            return Redirect::route('getDashboard') . with('fail', 'An error occurred, please try again later');
-        }
+        return Redirect::route('getDashboard') . with('fail', 'Something went wrong, please try again later');
     }
 }

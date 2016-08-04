@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration {
             $table->decimal('new_price',6,2);
             $table->string('image');
             $table->string('upload_link');
+            $table->decimal('sold', 6,1)->nullable();
             $table->timestamps();
         });
 	}
@@ -37,7 +38,7 @@ class CreateProductsTable extends Migration {
 	public function down()
 	{
 		//Drop products table
-        Schema::drop('products');
+        Schema::dropIfExists('products');
 	}
 
 }

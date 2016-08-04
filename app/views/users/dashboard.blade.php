@@ -108,6 +108,7 @@
                     <th class="price">Old Price</th>
                     <th class="price">New Price</th>
                     <th class="categorytitle">Category</th>
+                    <th class="sold">Numbers Sold</th>
                     <th class="total"> Action </th>
                 </tr>
                 @foreach($products as $product)
@@ -125,6 +126,7 @@
                         </th>
                         @endif
                     @endforeach
+                    <th class="sold">{{$product->sold}}</th>
                     <th class="total">
                      <a id="{{$product->id}}" href="#del_theme_modal" class="btn btn-danger btn-xs delete_theme" data-toggle="modal">Delete</a>
                       </th>
