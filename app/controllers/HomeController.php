@@ -21,6 +21,9 @@ class HomeController extends BaseController
         $products = Product::all();
         $categories = Category::all();
         $users = User::all();
-        return View::make('home')->with('products', $products)->with('categories', $categories)->with('users', $users);
+        $best_seller = DB::table('products')->where('sold', DB::raw("(select max(`sold`) from products)"))->get();
+        $best_offer = DB::table('products')->where('new_price', DB::raw("(select min(`new_price`) from products)"))->get();
+        return View::make('home')->with('products', $products)->with('categories', $categories)
+            ->with('users', $users)->with('best_seller', $best_seller)->with('best_offer', $best_offer);
     }
 }

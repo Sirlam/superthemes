@@ -46,29 +46,40 @@
 				<aside>
        			 <h1 class="headingfull"><span>Best Seller</span></h1>
           			<div class="sidewidt">
-          			@foreach ($products as $product)
-                      @if ($product->sold >= 20.0)
            			 <ul class="bestseller">
+                        @foreach($best_seller as $best)
              			 <li>
-                            <img width="50" height="50" src="{{url($product->image)}}" alt="product" title="product">
-                            <a class="productname" href="{{url('product/'.$product->id)}}"> {{ $product->title }}</a>
+                            <img width="50" height="50" src="{{url($best->image)}}" alt="product" title="product">
+                            <a class="productname" href="{{url('product/'.$best->id)}}"> {{ $best->title }}</a>
                             @foreach($categories as $category)
-                                @if ($category->id ==$product->category_id)
+                                @if ($category->id == $best->category_id)
                                     <span class="procategory">{{ $category->name }}</span>
                                 @endif
                             @endforeach
-                            <span class="price">{{ $product->price }}</span>
+                            <span class="price">{{ $best->new_price }}</span>
                           </li>
+                          @endforeach
                         </ul>
-                        @endif
-                        @endforeach
                       </div>
                       </aside>
 				<aside>
 					<h1 class="headingfull"><span>Best Offer</span> </h1>
-					<div class="sidewidt">
-						<img alt="" src="{{url('images/adbanner2.jpg')}}">
-					</div>
+                    <div class="sidewidt">
+           			 <ul class="bestseller">
+                        @foreach($best_offer as $offer)
+             			 <li>
+                            <img width="50" height="50" src="{{url($offer->image)}}" alt="product" title="product">
+                            <a class="productname" href="{{url('product/'.$offer->id)}}"> {{ $offer->title }}</a>
+                            @foreach($categories as $category)
+                                @if ($category->id == $offer->category_id)
+                                    <span class="procategory">{{ $category->name }}</span>
+                                @endif
+                            @endforeach
+                            <span class="price">{{ $offer->new_price }}</span>
+                          </li>
+                          @endforeach
+                        </ul>
+                      </div>
 				</aside>
 			</div>
             <!--sidebar Ends-->
