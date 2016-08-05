@@ -3,7 +3,7 @@ class Transactions extends Eloquent
 {
     protected $guarded = array('id');
 
-    protected $table = 'transaction';
+    protected $table = 'transactions';
 
     public function user()
     {

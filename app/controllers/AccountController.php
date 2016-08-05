@@ -5,9 +5,9 @@ class AccountController extends BaseController
     public function getAccount(){
         $categories = Category::all();
         $products = Product::all();
-        $users = User::all();
+        $user = Auth::user();
         return View::make('users.account')->with('categories', $categories)
-            ->with('products', $products)->with('users', $users);
+            ->with('products', $products)->with('user', $user);
     }
 
 }

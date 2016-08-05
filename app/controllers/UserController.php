@@ -127,4 +127,34 @@ class UserController extends BaseController
     public function contact(){
         return View::make('contact');
     }
+
+    public function updateUser(){
+        $validate = Validator::make(Input::all(), array(
+            'firstname' => 'required|min:4',
+            'lastname' => 'required|min:4',
+            'phone' => 'required|min:8',
+        ));
+        if($validate->fails())
+        {
+            return Redirect::route('getAccount')->withErrors($validate)->withInput();
+        }
+        else
+        {
+            $user = Auth::user();
+            $user->firstname = Input::get('firstname');
+            $user->lastname = Input::get('lastname');
+            $user->phone_number = Input::get('phone');
+            $user->address = Input::get('address');
+            $user->update();
+
+            if($user->update())
+            {
+                return Redirect::route('getAccount')->with('success', 'Your profile has been successfully updated');
+            }
+            else
+            {
+                return Redirect::route('getAccount')->with('fail', 'An error occurred while updating your profile');
+            }
+        }
+    }
 }

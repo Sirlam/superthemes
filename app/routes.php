@@ -23,6 +23,7 @@ Route::group(array('before' => 'guest'), function () {
     });
 });
 
+
 //Category routes
 Route::get('category/{cat_id}', array('uses' => 'CategoryController@index', 'as' => 'categoryIndex'));
 
@@ -68,7 +69,6 @@ Route::group(array('before' => 'auth'), function () {
     Route::get('product/add', array('uses' => 'ProductController@addProduct', 'as' => 'addProduct'));
     Route::group(array('before', 'csrf'), function () {
         Route::post('product/add', array('uses' => 'ProductController@postProduct', 'as' => 'postProduct'));
-        Route::post('/account', array('uses' => 'ProductController@postTransactions', 'as' => 'postTransactions'));
     });
 });
 
@@ -77,6 +77,7 @@ Route::get('dashboard', array('uses' => 'DashboardController@getDashboard', 'as'
 
 //Account routes
 Route::get('account', array('uses' => 'AccountController@getAccount', 'as' => 'getAccount'));
+Route::post('account', array('uses' => 'UserController@updateUser', 'as' => 'updateUser'));
 
 //User Logout
 Route::group(array('before' => 'auth'), function () {
