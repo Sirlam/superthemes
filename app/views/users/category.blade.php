@@ -56,23 +56,7 @@
                             @if ($category->id ==$prod->category_id)
                             <span class="procategory">{{ $category->name }}</span>
                             @endif
-                            @endforeach
-                            <span class="price">{{ $prod->price }}</span>
-                          </li>
-                         <!-- <li>
-                            <img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}" alt="product" title="product">
-                            <a class="productname" href="{{url('product')}}"> Product Name</a>
-                            <span class="procategory">Joomla</span>
-                            <span class="price">$250</span>
-                          </li>
-                          <li>
-                            <img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}" alt="product" title="product">
-                            <a class="productname" href="{{url('product')}}"> Product Name</a>
-                            <span class="procategory">Blogger</span>
-                            <span class="price">$250</span>
-                          </li>-->
-                          @endif
-                          @endforeach
+                            @endforeachh
                         </ul>
                       </div>
                       </aside>
@@ -99,7 +83,7 @@
       @endforeach
           <div class="thumbnail">
             <span class="sale tooltip-test" data-original-title="">Featured</span>
-            <a href="{{url('product')}}"><span><span><img alt="" src="{{url($product->image)}}" width="240"></span></span> </a>
+            <a href="{{url('product/'.$product->id)}}"><span><span><img alt="" src="{{url($product->image)}}" width="240"></span></span> </a>
             <div class="caption">
               <div class="price pull-left">
               @if($product->old_price!== null)
@@ -135,139 +119,6 @@
           </div>
         </li>
         @endforeach
-        <!--<li class="span3">
-          By<a href="#"> design_spot</a>
-          <div class="thumbnail">
-            <a href="{{url('product')}}"><span><span><img alt="" src="{{url('images/product-l1.jpg')}}" width="240"></span></span> </a>
-            <div class="caption">
-              <div class="price pull-left">
-                <span class="oldprice">$2225.00</span>
-                <span class="newprice">$2225.00</span>
-              </div>
-              <a class="btn pull-right" href="#"><i class="icon-shopping-cart"></i> Add to Cart</a>
-              <div class="clearfix"></div>
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <td>
-                      <span class="links pull-left">
-                        <a href="{{url('product')}}" class="info">info</a>
-                        <a href="{{url('wishlist')}}" class="wishlist">wishlist</a>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </li>
-        <li class="span3">
-          By<a href="#"> design_spot</a>
-          <div class="thumbnail">
-            <span class="offer tooltip-test" data-original-title="">Offer</span>
-            <a href="{{url('product')}}"><span><span><img alt="" src="{{url('images/product-l1.jpg')}}" width="240"></span></span> </a>
-            <div class="caption">
-              <div class="price pull-left">
-                <span class="oldprice">$2225.00</span>
-                <span class="newprice">$2225.00</span>
-              </div>
-              <a class="btn pull-right" href="#"><i class="icon-shopping-cart"></i> Add to Cart</a>
-              <div class="clearfix"></div>
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <td>
-                      <span class="links pull-left">
-                        <a href="{{url('product')}}" class="info">info</a>
-                        <a href="{{url('wishlist')}}" class="wishlist">wishlist</a>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </li>
-        <li class="span3">
-          By<a href="#"> design_spot</a>
-          <div class="thumbnail">
-            <a href="{{url('product')}}"><span><span><img alt="" src="{{url('images/product-l3.jpg')}}" width="240"></span></span> </a>
-            <div class="caption">
-              <div class="price pull-left">
-                <span class="oldprice">$2225.00</span>
-                <span class="newprice">$2225.00</span>
-              </div>
-              <a class="btn pull-right" href="#"><i class="icon-shopping-cart"></i> Add to Cart</a>
-              <div class="clearfix"></div>
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <td>
-                      <span class="links pull-left">
-                        <a href="{{url('product')}}" class="info">info</a>
-                        <a href="{{url('wishlist')}}" class="wishlist">wishlist</a>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </li>
-        <li class="span3">
-          By<a href="#"> design_spot</a>
-          <div class="thumbnail">
-            <span class="sale tooltip-test" data-original-title="">Sale</span>
-            <a href="{{url('product')}}"><span><span><img alt="" src="{{url('images/product-l1.jpg')}}" width="240"></span></span> </a>
-            <div class="caption">
-              <div class="price pull-left">
-                <span class="oldprice">$2225.00</span>
-                <span class="newprice">$2225.00</span>
-              </div>
-              <a class="btn pull-right" href="#"><i class="icon-shopping-cart"></i> Add to Cart</a>
-              <div class="clearfix"></div>
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <td>
-                      <span class="links pull-left">
-                        <a href="{{url('product')}}" class="info">info</a>
-                        <a href="{{url('wishlist')}}" class="wishlist">wishlist</a>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </li>
-        <li class="span3">
-          By<a href="#"> design_spot</a>
-          <div class="thumbnail">
-            <span class="sale tooltip-test" data-original-title="">Sale</span>
-            <a href="{{url('product')}}"><span><span><img alt="" src="{{url('images/product-l2.jpg')}}" width="240"></span></span> </a>
-            <div class="caption">
-              <div class="price pull-left">
-                <span class="oldprice">$2225.00</span>
-                <span class="newprice">$2225.00</span>
-              </div>
-              <a class="btn pull-right" href="#"><i class="icon-shopping-cart"></i> Add to Cart</a>
-              <div class="clearfix"></div>
-              <table class="table table-striped">
-                <tbody>
-                  <tr>
-                    <td>
-                      <span class="links pull-left">
-                        <a href="{{url('product')}}" class="info">info</a>
-                        <a href="{{url('wishlist')}}" class="wishlist">wishlist</a>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </li>-->
       </ul>
       <div id="pagination">
               {{ $products->links() }}

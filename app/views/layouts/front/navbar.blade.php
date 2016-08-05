@@ -18,21 +18,17 @@
 
             <li><a href="{{URL::route('getWishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
             @if(Auth::check() && Auth::user()->isAdmin())
-            <li><a href="{{ URL::route('getAdmin') }}"><i class="icon-user"></i> Register Admin</a></li>
-
-            <li><a href="{{url('wishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
-            @if (Auth::check() && Auth::user()->isAdmin())
             <li><a href="{{URL::route('getAdmin')}}"><i class="icon-heart"></i> Register Admin</a></li>
             <li><a href="{{URL::route('getAdminIndex')}}"><i class="icon-lock"></i> Admin BackEnd</a></li>
-            @endif
-            @if (Auth::check() && Auth::user()->isSeller())
+            <li><a href="{{URL::route('productReview')}}"><i class="icon-user"></i> Product Review</a></li>
+            @elseif (Auth::check() && Auth::user()->isSeller())
             <li><a href="{{URL::route('getDashboard')}}"><i class="icon-dashboard"></i> Dashboard</a></li>
             @endif
             @if (Auth::check())
             <li><a href="{{ URL::route('getLogout') }}"><i class="icon-user"></i> Logout</a></li>
             @else
-                <li><a href="{{url('login')}}"><i class="icon-lock"></i> Login</a></li>
-                <li><a href="{{url('register')}}"><i class="icon-user"></i> Register</a></li>
+            <li><a href="{{url('login')}}"><i class="icon-lock"></i> Login</a></li>
+            <li><a href="{{url('register')}}"><i class="icon-user"></i> Register</a></li>
             @endif
              </ul>
           </nav>
@@ -68,7 +64,6 @@
         </div>
       </div>
     </div>
-@endif
     <!-- Navigation Start -->
     <div  id="categorymenu">
       <div class="container">

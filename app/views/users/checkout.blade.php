@@ -84,11 +84,11 @@
           <div class="checkoutstep" style="display: none;">
             <p>Please select the preferred payment method to use on this order.</p>
             <label class=" inline">
-              <input type="radio" value="option1" style="">
+              <input type="radio" value="debit" name="payment" style="" checked>
               Debit Card</label>
             <br>
             <label class=" inline">
-             <input type="radio" value="option2" style="">
+             <input type="radio" value="paypal" name="payment" style="">
                Pay Pal</label>
              <br>
             <div class="pull-right">

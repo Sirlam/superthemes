@@ -25,6 +25,8 @@ class CreateProductsTable extends Migration {
             $table->decimal('new_price',6,2);
             $table->string('image');
             $table->string('upload_link');
+            $table->decimal('sold',6,2)->nullable();
+            $table->enum('isFeatured', array(0, 1))->default(0);
             $table->timestamps();
         });
 	}

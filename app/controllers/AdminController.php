@@ -2,6 +2,35 @@
 
 class AdminController extends BaseController
 {
+    public function productReview()
+    {
+        $users = User::all();
+        $categories = Category::all();
+        return View::make('admin.productreview')
+            ->with('users', $users)
+            ->with('categories', $categories)
+            ->with('products' , Product::where('isFeatured' , '=' , 1)->paginate(6))
+            ->with('prods' , Product::where('isFeatured' , '=' , 0)->paginate(6));
+    }
+    public function featureProduct($id)
+    {
+        $product = product::find($id);
+        $product->isFeatured = 1;
+        $product->save();
+        return Redirect::route('productReview')->with('success', 'Product featured successfully');
+    }
+    public function unfeatureProduct($id)
+    {
+        $product = product::find($id);
+        $product->isFeatured = 0;
+        $product->save();
+        return Redirect::route('productReview')->with('success', 'Product unfeatured successfully');
+    }
+    public function productDelete($id)
+    {
+        Product::find($id)->delete();
+        return Redirect::route('productReview')->with('success', 'Product deleted successfully');
+    }
     public function getAdmin()
     {
 
@@ -28,7 +57,6 @@ class AdminController extends BaseController
                 'confirm_password' => 'required|same:password',
                 'email' => 'required|unique:users|min:10',
                 'phone' => 'required|min:8',
-                'address' => 'required'
             ));
         }
         else {

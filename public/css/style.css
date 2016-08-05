@@ -23,6 +23,9 @@
 #center {
     text-align: center;
 }
+.hide-here {
+    display: none;
+}
 body {
     font-family: 'Open Sans', calibri, Arial, Helvetica, sans-serif;
     font-size: 13px;

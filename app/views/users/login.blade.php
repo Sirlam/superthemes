@@ -41,7 +41,7 @@
                                 Remember me
                             </div>
                             {{ Form::token() }}
-                    <a href="{{url('remind')}}" class="">Forgotten Password?</a>
+                    <a href="{{URL::route('getRemind')}}" class="">Forgotten Password?</a>
                     <p>Don't have an account? <a href="{{url('register')}}">Register here</a> </p>
                     <button type="submit" class="btn btn-success">Login</button>
                   </fieldset>
