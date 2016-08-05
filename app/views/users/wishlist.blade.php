@@ -10,6 +10,15 @@
         <li><a href="{{url('/')}}">Home</a><span class="divider">/</span></li>
         <li class="active">Wishlist</li>
       </ul>
+      @if (Session::has('success'))
+              <div class="container">
+                  <div class="alert alert-success"> {{ Session::get('success') }}</div>
+              </div>
+          @elseif (Session::has('fail'))
+              <div class="container">
+                  <div class="alert alert-danger"> {{ Session::get('fail') }}</div>
+              </div>
+          @endif
       <h1 class="productname">Presently In your wishlist</h1>
       <div class="cart-info">
             <table class="table table-striped table-bordered">
@@ -48,7 +57,7 @@
                 <input type="hidden" name="product_price" value="{{ $product->new_price }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <td class="total"><a class="btn" href="{{URL::route('addCart')}}">Add to Cart</a>
-                  <a href="#"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
+                  <a href="{{url('/wishlist/delete/'.$product->id)}}"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
                 </form>
               </tr>
               @endif

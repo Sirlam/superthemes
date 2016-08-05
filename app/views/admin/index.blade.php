@@ -156,7 +156,7 @@
             </div>
         </div>
     </div>
-    <a href="{{URL::route('getAdminLogout')}}" class="pull-right">Logout</a>
+    <a href="{{URL::route('getLogout')}}" class="pull-right">Logout</a>
     @else
     <div class="container">
         <button class="btn btn-large"> <a href="{{URL::route('home')}}">Unauthorized, Get me out of here</a></button>

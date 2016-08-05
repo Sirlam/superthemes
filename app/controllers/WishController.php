@@ -35,4 +35,9 @@ class WishController extends BaseController
 
         
     }
+    public function deleteWishlist($id)
+    {
+        Wishlist::where('product_id', '=', $id)->where('user_id', '=', Auth::user()->id)->delete();
+        return Redirect::route('getWishlist')->with('sucess', 'wishlist item deleted successfully');
+    }
 }

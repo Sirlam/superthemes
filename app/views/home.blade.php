@@ -5,7 +5,7 @@
 <!--Content starts-->
 <div id="maincontainer">
 	<!--Slider Starts-->
-	<section class="slider">
+    <section class="slider">
 		<div class="container">
 			<div class="slider-wrapper theme-default">
 				<div id="slider" class="nivoSlider">
@@ -59,6 +59,7 @@
                             <span class="price">{{ $best->new_price }}</span>
                           </li>
                           @endforeach
+
                         </ul>
                       </div>
                       </aside>
@@ -90,7 +91,7 @@
     <div class="sidewidt">
       <ul class="thumbnails">
           @foreach ($products as $product)
-              @if ($product->id >= 7 && $product->id <= 12)
+              @if ($product->isFeatured == 1)
         <li class="span3">
       @foreach($users as $user)
         @if ($user->id ==$product->user_id)

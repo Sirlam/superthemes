@@ -35,11 +35,9 @@
              			 <li>
                             <img width="50" height="50" src="{{url($best->image)}}" alt="product" title="product">
                             <a class="productname" href="{{url('product/'.$best->id)}}"> {{ $best->title }}</a>
-                            @foreach($categories as $category)
                                 @if ($category->id == $best->category_id)
                                     <span class="procategory">{{ $category->name }}</span>
                                 @endif
-                            @endforeach
                             <span class="price">{{ $best->new_price }}</span>
                           </li>
                           @endforeach
@@ -82,7 +80,7 @@
       @endforeach
           <div class="thumbnail">
             <span class="sale tooltip-test" data-original-title="">Featured</span>
-            <a href="{{url('product')}}"><span><span><img alt="" src="{{url($product->image)}}" width="240"></span></span> </a>
+            <a href="{{url('product/'.$product->id)}}"><span><span><img alt="" src="{{url($product->image)}}" width="240"></span></span> </a>
             <div class="caption">
               <div class="price pull-left">
               @if($product->old_price!== null)
