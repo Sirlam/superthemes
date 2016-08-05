@@ -24,7 +24,7 @@
             <li><a href="{{URL::route('getDashboard')}}"><i class="icon-dashboard"></i> Dashboard</a></li>
             @endif
             @if (Auth::check())
-            <li><a href="#"><i class="icon-user"></i> My Account</a></li>
+            <li><a href="{{URL::route('getAccount')}}"><i class="icon-user"></i> My Account</a></li>
             <li><a href="{{ URL::route('getLogout') }}"><i class="icon-user"></i> Logout</a></li>
             @else
                 <li><a href="{{url('login')}}"><i class="icon-lock"></i> Login</a></li>
