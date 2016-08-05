@@ -78,6 +78,7 @@ Route::get('dashboard', array('uses' => 'DashboardController@getDashboard', 'as'
 //Account routes
 Route::get('account', array('uses' => 'AccountController@getAccount', 'as' => 'getAccount'));
 Route::post('account', array('uses' => 'UserController@updateUser', 'as' => 'updateUser'));
+//Route::post('postTransactions', array('uses' => 'ProductController@postTransactions', 'as' => 'postTransactions'));
 
 //User Logout
 Route::group(array('before' => 'auth'), function () {

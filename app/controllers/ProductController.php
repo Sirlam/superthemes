@@ -71,7 +71,7 @@ class ProductController extends BaseController
 
     public function postTransactions()
     {
-        $transactions = new Transactions();
+        $transactions = new Transaction();
         if (sizeof(Cart::content()) > 0) {
             foreach (Cart::content() as $item) {
                 //dd($item);
