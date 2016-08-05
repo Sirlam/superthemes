@@ -48,7 +48,7 @@
               <div class="quantitybox">
               	<a class="btn btn-success pull-left" href="#">Add to Cart</a>
                 <div class="links  productlinks">
-                  <a class="wishlist" href="{{url('whislist')}}">wishlist</a>
+                  <a class="wishlist" href="{{url('wishlist/add/'.$product->id)}}">wishlist</a>
                 </div>
               </div>
               <div class="productdesc">

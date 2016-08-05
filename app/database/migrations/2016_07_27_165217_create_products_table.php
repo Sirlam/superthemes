@@ -27,6 +27,7 @@ class CreateProductsTable extends Migration {
             $table->string('upload_link');
             $table->decimal('sold',6,2)->nullable();
             $table->enum('isFeatured', array(0, 1))->default(0);
+            $table->decimal('sold', 6,1)->nullable();
             $table->timestamps();
         });
 	}
@@ -39,7 +40,7 @@ class CreateProductsTable extends Migration {
 	public function down()
 	{
 		//Drop products table
-        Schema::drop('products');
+        Schema::dropIfExists('products');
 	}
 
 }

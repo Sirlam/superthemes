@@ -7,6 +7,15 @@
 <div id="maincontainer">
 	<section id="checkout">
     <div class="container">
+    @if (Session::has('success'))
+            <div class="container">
+                <div class="alert alert-success"> {{ Session::get('success') }}</div>
+            </div>
+        @elseif (Session::has('fail'))
+            <div class="container">
+                <div class="alert alert-danger"> {{ Session::get('fail') }}</div>
+            </div>
+        @endif
       <ul class="breadcrumb">
         <li><a href="{{url('/')}}">Home</a><span class="divider">/</span></li>
         <li class="active">Checkout</li>
@@ -92,12 +101,12 @@
                Pay Pal</label>
              <br>
             <div class="pull-right">
-              <a class="btn btn-success pull-right">Continue</a>
+              <a class="btn btn-success pull-right">Pay</a>
               <div class="privacy">I have read and agree to the <a href="#">Privacy Policy</a>
               </div>
             </div>
           </div>
-          <div class="checkoutsteptitle down">Step 4: Confirm Order<a class="modify">Modify</a>
+          <div class="checkoutsteptitle down">Step 3: Confirm Order<a class="modify">Modify</a>
           </div>
           <div class="checkoutstep" style="display: none;">
             <div class="cart-info">
@@ -112,79 +121,54 @@
                     <th width="11%" class="Action">Edit</th>
                   </tr>
                   @if (sizeof(Cart::content())>0)
-                                 @foreach (Cart::content() as $item)
-                                <tr>
-                                 <td class="image"><a href="#"><img width="30" height="30" src="{{url($item->product->image)}}" alt="product" title="product"></a></td>
-                                  <td class="name">{{ $item->product->title }}</td>
-                                  <td class="model">{{ $item->name }}</td>
-                                  <!--<th class="quantity">Stock</th>-->
-                                  <td class="price">{{ $item->price }}</td>
-                                   <form method="post" action="{{URL::route('removeCart')}}">
-                                   <input type="hidden" name="product_id" value="{{ $item->rowid }}">
-                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                   <td class="total"><a class="btn" href="#">Remove Item</a>
-                                   <a href="{{ URL::route('removeCart') }}"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
-                                    </form>
-                                </tr>
-                                @endforeach
-                                @endif
-                 <!--<tr>
-                    <td class="image"><a href="#"><img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}" alt="product" title="product"></a></td>
-                    <td class="name"><a href="#">Women Product</a></td>
-                    <td class="model">LM - 501</td>
-                    <td class="quantity"><input type="text" class="span1" name="quantity[40]" value="1" size="1"></td>
-                    <td class="price">$120.68</td>
-                    <td class="total">$120.68</td>
-                    <td class="total"><a href="#"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
-                  </tr>
-                  <tr>
-                    <td class="image"><a href="#"><img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}" alt="product" title="product"></a></td>
-                    <td class="name"><a href="#">Kids Products</a></td>
-                    <td class="model">LM - 501</td>
-                    <td class="quantity"><input type="text" class="span1" name="quantity[40]" value="1" size="1"></td>
-                    <td class="price">$120.68</td>
-                    <td class="total">$120.68</td>
-                    <td class="total"><a href="#"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
-                  </tr>
-                  <tr>
-                    <td class="image"><a href="#"><img width="50" height="50" src="{{url('images/prodcut-40x40.jpg')}}" alt="product" title="product"></a></td>
-                    <td class="name"><a href="#">T-Shirt</a></td>
-                    <td class="model">LM - 501</td>
-                    <td class="quantity"><input type="text" class="span1" name="quantity[40]" value="1" size="1"></td>
-                    <td class="price">$120.68</td>
-                    <td class="total">$120.68</td>
-                    <td class="total"><a href="#"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
-                  </tr>-->
-                </tbody></table>
+                    @foreach (Cart::content() as $item)
+                        <tr>
+                            <td class="image"><a href="#"><img width="30" height="30" src="{{url($item->product->image)}}" alt="product" title="product"></a></td>
+                            <td class="name">{{ $item->product->title }}</td>
+                            <td class="model">{{ $item->name }}</td>
+                            <td class="price">{{ $item->price }}</td>
+                            <form method="post" action="{{URL::route('removeCart')}}">
+                                <input type="hidden" name="product_id" value="{{ $item->rowid }}">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <td class="total">
+                                <a href="{{ URL::route('removeCart') }}">
+                                Remove
+                                <img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test">
+                                </a>
+                                </td>
+                            </form>
+                        </tr>
+                    @endforeach
+                  @endif
+                </tbody>
+                </table>
               </div>
-            <div class="row">
+
+       <div class="row">
         <div class="pull-right">
-          <div class="span4 pull-right">
-            <table class="table table-striped table-bordered ">
-              <tbody><tr>
-                <td><span class="extra bold">Sub-Total :</span></td>
-                <td><span class="bold">$101.0</span></td>
-              </tr>
-              <tr>
-                <!--<td><span class="extra bold">Eco Tax (-2.00) :</span></td>
-                <td><span class="bold">$11.0</span></td>
-              </tr>
-              <tr>
-                <td><span class="extra bold">VAT (17.5%) :</span></td>
-                <td><span class="bold">$21.0</span></td>
-              </tr>
-              <tr>-->
-                <td><span class="extra bold totalamout">Total :</span></td>
-                <td><span class="bold totalamout">{{ Cart::total() }}</span></td>
-              </tr>
-            </tbody></table><br>
-            <a type="submit" class="btn btn-success pull-right" > Pay <a/>
-            <a type="submit" href="{{url('/')}}" class="btn pull-right mr10"> Continue shopping<a/>
+            <div class="span4 pull-right">
+                <table class="table table-striped table-bordered ">
+                <tbody>
+                <tr>
+                    <td><span class="extra bold">Sub-Total :</span></td>
+                    <td><span class="bold">$101.0</span></td>
+                </tr>
+                <tr>
+                    <td><span class="extra bold totalamout">Total :</span></td>
+                    <td><span class="bold totalamout">{{ Cart::total() }}</span></td>
+                </tr>
+                </tbody>
+                </table>
+                <br>
+                <a type="submit" href="{{URL::route('postTransactions')}}" class="btn btn-success pull-right" > Submit</a>
+                <a type="button" href="{{url('/')}}" class="btn pull-right mr10"> Continue shopping</a>
+            </div>
         </div>
       </div>
-          </div>
-     </div>
-  </section>
 </div>
+</div>
+</section>
+</div>
+
 
 @stop

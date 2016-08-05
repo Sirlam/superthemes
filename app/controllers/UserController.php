@@ -85,8 +85,7 @@ class UserController extends BaseController
                 'password' => 'required|min:6',
                 'confirm_password' => 'required|same:password',
                 'email' => 'required|unique:users|min:10',
-                'phone' => 'required|min:8',
-                'address' => 'required'
+                'phone' => 'required|min:8'
             ));
         }
         else {

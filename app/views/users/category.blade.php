@@ -4,22 +4,6 @@
 
 <!--Content starts-->
 <div id="maincontainer">
-	<!--Slider Starts-->
-	<!--<section class="slider">
-		<div class="container">
-			<div class="slider-wrapper theme-default">
-				<div id="slider" class="nivoSlider">
-					<img src="{{url('images/banner1.jpg')}}" data-thumb="images/banner1.jpg" alt="" />
-					<img src="{{url('images/banner2.jpg')}}" data-thumb="images/banner2.jpg" alt="" />
-					<img src="{{url('images/banner3.jpg')}}" data-thumb="images/banner3.jpg" alt="" data-transition="slideInLeft" />
-				</div>
-				<div id="htmlcaption" class="nivo-html-caption"> <strong>This</strong> is an example of a <em>HTML</em> caption with
-					<a href="#">a link</a>
-                </div>
-			</div>
-		</div>
-	</section>
-    <!--Slider Ends-->
 	<div class="container">
 		<div class="row">
 @if (Session::has('success'))
@@ -44,27 +28,40 @@
 					</div>
 				</aside>
 				<aside>
-       			 <h1 class="headingfull"><span>Best Seller</span></h1>
+                    <h1 class="headingfull"><span>Best Seller</span></h1>
           			<div class="sidewidt">
-          			@foreach ($prods as $prod)
-                      @if ($prod->id >= 3 && $prod->id <= 5)
            			 <ul class="bestseller">
+                        @foreach($best_seller as $best)
              			 <li>
-                            <img width="50" height="50" src="{{url($prod->image)}}" alt="product" title="product">
-                            <a class="productname" href="{{url('product')}}"> {{ $prod->title }}</a>
-                            @foreach($categories as $category)
-                            @if ($category->id ==$prod->category_id)
-                            <span class="procategory">{{ $category->name }}</span>
-                            @endif
-                            @endforeachh
+                            <img width="50" height="50" src="{{url($best->image)}}" alt="product" title="product">
+                            <a class="productname" href="{{url('product/'.$best->id)}}"> {{ $best->title }}</a>
+                                @if ($category->id == $best->category_id)
+                                    <span class="procategory">{{ $category->name }}</span>
+                                @endif
+                            <span class="price">{{ $best->new_price }}</span>
+                          </li>
+                          @endforeach
                         </ul>
                       </div>
                       </aside>
 				<aside>
 					<h1 class="headingfull"><span>Best Offer</span> </h1>
-					<div class="sidewidt">
-						<img alt="" src="{{url('images/adbanner2.jpg')}}">
-					</div>
+                    <div class="sidewidt">
+           			 <ul class="bestseller">
+                        @foreach($best_offer as $offer)
+             			 <li>
+                            <img width="50" height="50" src="{{url($offer->image)}}" alt="product" title="product">
+                            <a class="productname" href="{{url('product/'.$offer->id)}}"> {{ $offer->title }}</a>
+                            @foreach($categories as $category)
+                                @if ($category->id == $offer->category_id)
+                                    <span class="procategory">{{ $category->name }}</span>
+                                @endif
+                            @endforeach
+                            <span class="price">{{ $offer->new_price }}</span>
+                          </li>
+                          @endforeach
+                        </ul>
+                      </div>
 				</aside>
 			</div>
             <!--sidebar Ends-->
