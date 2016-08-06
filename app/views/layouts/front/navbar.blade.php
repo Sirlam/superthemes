@@ -17,7 +17,6 @@
             <ul class="nav pull-right">
 
             <li><a href="{{URL::route('getWishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
-<<<<<<< HEAD
             @if(Auth::check() && Auth::user()->isAdmin())
             <li><a href="{{URL::route('getAdmin')}}"><i class="icon-heart"></i> Register Admin</a></li>
             <li><a href="{{URL::route('getAdminIndex')}}"><i class="icon-lock"></i> Admin BackEnd</a></li>
@@ -66,10 +65,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> a5eab5644f0f70092bab90536eebe4f34bb36192
     <!-- Navigation Start -->
     <div  id="categorymenu">
       <div class="container">
