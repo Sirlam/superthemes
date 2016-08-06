@@ -51,10 +51,14 @@ class ProductController extends BaseController
         $product = Product::find($id);
         $categories = Category::all();
         $users = User::all();
+        $prods = Product::all()->random(4);
         return View::make('product')
             ->with('product', $product)
             ->with('categories', $categories)
-            ->with('users', $users);
+            ->with('users', $users)
+            ->with('prods', $prods)
+            ->with('comments' , Comment::where('product_id' , '=' , $product->id)->paginate(5));
+
     }
 
     public function deleteProduct($id)
@@ -71,12 +75,12 @@ class ProductController extends BaseController
 
     public function postTransactions()
     {
-        $transactions = new Transactions();
         if (sizeof(Cart::content()) > 0) {
             foreach (Cart::content() as $item) {
                 //dd($item);
+                $transactions = new Transaction();
                 $transactions->product_id = $item->product->id;
-                $transactions->user_id = Auth::User()->id;
+                $transactions->user_id = Input::get('user_id');
                 $transactions->save();
             }
             if ($transactions->save()) {
@@ -86,6 +90,31 @@ class ProductController extends BaseController
                 return Redirect::route('checkout')
                     ->with('fail', 'Something went wrong, please try again later');
             }
+        }
+    }
+    public function getSearch() {
+        $keyword = Input::get('keyword');
+        $users = User::all();
+        $products = Product::all();
+        $categories = Category::all();
+
+        return View::make('search')
+            ->with('products' , Product::where('title' , 'LIKE' , '%'.$keyword.'%')->get())
+            ->with('keyword' , $keyword)
+            ->with('categories', $categories)
+            ->with('users', $users);
+    }
+    public function postComment() {
+        $comment = new Comment();
+        $comment->user_id = Input::get('user_id');
+        $comment->product_id = Input::get('product_id');
+        $comment->comment = Input::get('comment');
+        if ($comment->save()) {
+            return Redirect::back()
+                ->with('success', 'Comment Added successfully');
+        } else {
+            return Redirect::back()
+                ->with('fail', 'Something went wrong, please try again later');
         }
     }
 }

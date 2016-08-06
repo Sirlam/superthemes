@@ -7,17 +7,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
           </button>
-
           <ul class="nav">
             <li><a href="#"><i class="icon-envelope"></i> info@superthemes.com</a></li>
             <li><a href="#"><i class="icon-phone-sign"></i> +91 00 0000 000</a></li>
           </ul>
-
           <nav style="height:0" class="nav-collapse collapse">
             <ul class="nav pull-right">
-
             <li><a href="{{URL::route('getWishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
-<<<<<<< HEAD
             @if(Auth::check() && Auth::user()->isAdmin())
             <li><a href="{{URL::route('getAdmin')}}"><i class="icon-heart"></i> Register Admin</a></li>
             <li><a href="{{URL::route('getAdminIndex')}}"><i class="icon-lock"></i> Admin BackEnd</a></li>
@@ -52,10 +48,10 @@
             </div>
            @endif
           </div>
-          <form class="form-search marginnull topsearch pull-right">
+          <form class="form-search marginnull topsearch pull-right" method="get" action ="{{URL::route('getSearch')}}">
             <div class="span6 pull-left">
                 <button value="Search" class="btn btn-success pull-right search" type="submit">Search</button>
-                <input type="text" class="span5 search-query search-icon-top pull-right" placeholder="Search a theme here...">
+                <input type="text" name="keyword" class="span5 search-query search-icon-top pull-right" placeholder="Search a theme here...">
             </div>
             <div class="pull-right ml5">
             @if (Sizeof(Cart::content()) >=0)
@@ -66,10 +62,6 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> a5eab5644f0f70092bab90536eebe4f34bb36192
     <!-- Navigation Start -->
     <div  id="categorymenu">
       <div class="container">

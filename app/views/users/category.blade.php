@@ -97,7 +97,7 @@
               @endforeach
               <input type="hidden" name="product_price" value="{{ $product->new_price }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <button type="submit" class="btn pull-right" type="submit"><i class="icon-shopping-cart"></i> Add to Cart </button>
+              <button type="submit" class="btn pull-right"><i class="icon-shopping-cart"></i> Add to Cart </button>
               </form>
               <div class="clearfix"></div>
               <table class="table table-striped">

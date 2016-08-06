@@ -16,7 +16,7 @@
         @endif
 
         <ul class="nav nav-tabs" id="myTab">
-            <li class="active"><a href="#view_themes">View my themes</a> </li>
+            <li class="active"><a href="#add_themes">View my themes</a> </li>
             <li><a href="#add_theme">Add theme</a> </li>
         </ul>
         <div class="tab-content">
