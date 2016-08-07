@@ -6,10 +6,10 @@
           <h2>About Us </h2>
           <p>
             "Superthemes is a market place that brings theme designers and sellers
-            together.
+            together. We give designers to market their products on our site for free
+            and get the chance to sell their works
             <br>
-            <br>similique sunt in culpa qui officia
-            deserunt mollitia animi,</p>
+            <br>Discounts and promos are also given occasionally</p>
         </div>
         <div class="span3 contact">
           <h2>Contact Us </h2>
