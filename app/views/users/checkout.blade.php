@@ -160,7 +160,11 @@
                 </tbody>
                 </table>
                 <br>
-                <a type="submit" href="{{URL::route('postTransactions')}}" class="btn btn-success pull-right" > Submit</a>
+                 <form method="post" action="{{URL::route('postTransactions')}}">
+                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <button type="submit" class="btn btn-success pull-right" > Submit</button>
+                </form>
                 <a type="button" href="{{url('/')}}" class="btn pull-right mr10"> Continue shopping</a>
             </div>
         </div>

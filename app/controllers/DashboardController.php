@@ -2,7 +2,8 @@
 
 class DashboardController extends BaseController
 {
-    public function getDashboard(){
+    public function getDashboard()
+    {
         $categories = Category::all();
         $products = Product::all();
         $users = User::all();

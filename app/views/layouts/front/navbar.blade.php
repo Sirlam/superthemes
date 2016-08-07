@@ -7,15 +7,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
           </button>
-
           <ul class="nav">
             <li><a href="#"><i class="icon-envelope"></i> info@superthemes.com</a></li>
             <li><a href="#"><i class="icon-phone-sign"></i> +91 00 0000 000</a></li>
           </ul>
-
           <nav style="height:0" class="nav-collapse collapse">
             <ul class="nav pull-right">
-
             <li><a href="{{URL::route('getWishlist')}}"><i class="icon-heart"></i> Wishlist</a></li>
             @if(Auth::check() && Auth::user()->isAdmin())
             <li><a href="{{URL::route('getAdmin')}}"><i class="icon-heart"></i> Register Admin</a></li>
@@ -51,10 +48,10 @@
             </div>
            @endif
           </div>
-          <form class="form-search marginnull topsearch pull-right">
+          <form class="form-search marginnull topsearch pull-right" method="get" action ="{{URL::route('getSearch')}}">
             <div class="span6 pull-left">
                 <button value="Search" class="btn btn-success pull-right search" type="submit">Search</button>
-                <input type="text" class="span5 search-query search-icon-top pull-right" placeholder="Search a theme here...">
+                <input type="text" name="keyword" class="span5 search-query search-icon-top pull-right" placeholder="Search a theme here...">
             </div>
             <div class="pull-right ml5">
             @if (Sizeof(Cart::content()) >=0)
@@ -76,7 +73,6 @@
             <li><a href="{{url('category/'.$category->id)}}">{{ $category->name }}</a></li>
             @endforeach
             <li><a href="{{url('contact')}}">Contact</a></li>
-            <li><a href="{{url('blog')}}">Blog</a></li>
           </ul>
         </nav>
       </div>

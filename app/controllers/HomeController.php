@@ -26,4 +26,5 @@ class HomeController extends BaseController
         return View::make('home')->with('products', $products)->with('categories', $categories)
             ->with('users', $users)->with('best_seller', $best_seller)->with('best_offer', $best_offer);
     }
+
 }

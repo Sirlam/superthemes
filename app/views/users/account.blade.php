@@ -80,8 +80,29 @@
                     <th class="total"> Action </th>
                 </tr>
 
-                <tr>
-                </tr>
+                @foreach($transactions as $transaction)
+                    @if($user->id == $transaction->user_id)
+                    @foreach($products as $product)
+                    <tr>
+                    <th class="image"><img width="30" height="30" alt="Theme" src="{{$product->image}}"> </th>
+                    <th class="name">{{$product->title}}</th>
+                    <th class="model">{{$product->description}}</th>
+                    <th class="price">{{$product->new_price}}</th>
+                    @foreach($categories as $category)
+                        @if($category->id == $product->category_id)
+                        <th class="categorytitle">
+                            {{$category->name}}
+                        </th>
+                        @endif
+                    @endforeach
+                    <th class="total">
+                     <a href="{{$product->upload_link}}" class="btn btn-primary btn-xs delete_theme">Download</a>
+                      </th>
+                    </tr>
+                    @endforeach
+                    @endif
+                @endforeach
+
                 </table>
                 </div>
             </div>

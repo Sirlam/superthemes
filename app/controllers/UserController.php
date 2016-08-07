@@ -1,4 +1,5 @@
 <?php
+
 class UserController extends BaseController
 {
     public function getRegister()
@@ -10,12 +11,16 @@ class UserController extends BaseController
     {
         return View::make('users.login');
     }
-    public function getLogout() {
+
+    public function getLogout()
+    {
         Auth::logout();
         Session::flush();
         return Redirect::route('home');
     }
-   public function postRegister() {
+
+    public function postRegister()
+    {
         $validate = Validator::make(Input::all(), array(
             'firstname' => 'required|min:4',
             'lastname' => 'required|min:4',
@@ -24,12 +29,9 @@ class UserController extends BaseController
             'email' => 'required|unique:users|min:10',
             'phone' => 'required|min:8',
         ));
-        if($validate->fails())
-        {
+        if ($validate->fails()) {
             return Redirect::route('getRegister')->withErrors($validate)->withInput();
-        }
-        else
-        {
+        } else {
             $user = new User();
             $user->lastname = Input::get('lastname');
             $user->firstname = Input::get('firstname');
@@ -39,44 +41,38 @@ class UserController extends BaseController
             $user->phone_number = Input::get('phone');
             $user->address = Input::get('address');
 
-            if($user->save())
-            {
+            if ($user->save()) {
                 return Redirect::route('getLogin')->with('success', 'you registered successfully you can now login');
-            }
-            else
-            {
+            } else {
                 return Redirect::route('getLogin')->with('fail', 'an error occurred while creating your profile');
             }
         }
     }
-    public function postLogin() {
+
+    public function postLogin()
+    {
         $validator = Validator::make(Input::all(), array(
             'email' => 'required|email',
             'password' => 'required'
         ));
-        if($validator->fails())
-        {
+        if ($validator->fails()) {
             return Redirect::route('getLogin')->withErrors($validator)->withInput();
-        }
-        else
-        {
+        } else {
             $remember = (Input::has('remember')) ? true : false;
             $auth = Auth::attempt(array(
                 'email' => Input::get('email'),
                 'password' => Input::get('password')
             ), $remember);
-            if ($auth)
-            {
+            if ($auth) {
                 return Redirect::intended('/');
-            }
-            else
-            {
+            } else {
                 return Redirect::route('getLogin')->with('fail', 'You entered the wrong username or password');
             }
         }
     }
 
-    public function adminRegister(){
+    public function adminRegister()
+    {
         $check = Input::get('admin_pin');
         if ($check === 'admin') {
             $validate = Validator::make(Input::all(), array(
@@ -87,16 +83,12 @@ class UserController extends BaseController
                 'email' => 'required|unique:users|min:10',
                 'phone' => 'required|min:8'
             ));
+        } else {
+            return Redirect::route('getAdmin')->with('fail', 'Please enter the correct admin pin')->withInput();
         }
-        else {
-            return Redirect::route('getAdmin')->with('fail','Please enter the correct admin pin')->withInput();
-        }
-        if($validate->fails())
-        {
+        if ($validate->fails()) {
             return Redirect::route('getRegister')->withErrors($validate)->withInput();
-        }
-        else
-        {
+        } else {
             $user = new User();
             $user->lastname = Input::get('lastname');
             $user->firstname = Input::get('firstname');
@@ -106,40 +98,58 @@ class UserController extends BaseController
             $user->address = Input::get('address');
             $user->isAdmin = 1;
 
-            if($user->save())
-            {
+            if ($user->save()) {
                 return Redirect::route('getLogin')->with('success', 'you registered successfully you can now login');
-            }
-            else
-            {
+            } else {
                 return Redirect::route('getLogin')->with('fail', 'an error occurred while creating your profile');
             }
         }
     }
 
-    public function checkout(){
-        return View::make('users.checkout');
+    public function checkout()
+    {
+        if (!Auth::check()) {
+            return Redirect::route('getLogin')->with('failure', 'please login to checkout');
+        } else {
+            return View::make('users.checkout');
+        }
     }
 
-    public function wishlist(){
-        return View::make('users.wishlist');
-    }
-    public function contact(){
+    public function contact()
+    {
         return View::make('contact');
     }
 
-    public function updateUser(){
+    public function sendMail()
+    {
+        $validate = Validator::make(Input::all(), array(
+            'firstname' => 'required|min:4',
+            'email' => 'required|min:4',
+            'message' => 'required|min:6',
+        ));
+
+        if ($validate->passes()) {
+            Mail::send('contact', array('firstname'=>Input::get('firstname')), function($message){
+                $message->to('info@superthemes.com', Input::get('firstname')->subject('You received a mail'));
+            });
+            return Redirect::to('contact')->with('message', 'Your message has been received. We will get back to you shortly')
+                ->withErrors($validate)->withInput();
+        }else{
+            return Redirect::to('contact')->with('message', 'An error occurred')
+                ->withErrors($validate)->withInput();
+        }
+    }
+
+    public function updateUser()
+    {
         $validate = Validator::make(Input::all(), array(
             'firstname' => 'required|min:4',
             'lastname' => 'required|min:4',
             'phone' => 'required|min:8',
         ));
-        if($validate->fails())
-        {
+        if ($validate->fails()) {
             return Redirect::route('getAccount')->withErrors($validate)->withInput();
-        }
-        else
-        {
+        } else {
             $user = Auth::user();
             $user->firstname = Input::get('firstname');
             $user->lastname = Input::get('lastname');
@@ -147,12 +157,9 @@ class UserController extends BaseController
             $user->address = Input::get('address');
             $user->update();
 
-            if($user->update())
-            {
+            if ($user->update()) {
                 return Redirect::route('getAccount')->with('success', 'Your profile has been successfully updated');
-            }
-            else
-            {
+            } else {
                 return Redirect::route('getAccount')->with('fail', 'An error occurred while updating your profile');
             }
         }
