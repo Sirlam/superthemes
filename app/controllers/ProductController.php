@@ -75,17 +75,26 @@ class ProductController extends BaseController
 
     public function postTransactions()
     {
-        //Cart::remove();
-
         if (sizeof(Cart::content()) > 0) {
             foreach (Cart::content() as $item) {
                 //dd($item);
                 $transactions = new Transaction();
+                $product = Product::find($item->product->id);
+
                 $transactions->product_id = $item->product->id;
                 $transactions->user_id = Input::get('user_id');
                 $transactions->save();
+
+                if($product->sold == null){
+                    $product->sold = 1.0;
+                    $product->update();
+                }else{
+                    $product->sold = $product->sold + 1.0;
+                    $product->update();
+                }
             }
-            if ($transactions->save()) {
+            if ($transactions->save() && $product->update()) {
+                Cart::destroy();
                 return Redirect::route('getAccount')
                     ->with('success', 'Theme(s) successfully bought, download here');
             } else {
