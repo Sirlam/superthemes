@@ -75,8 +75,6 @@ class ProductController extends BaseController
 
     public function postTransactions()
     {
-        //Cart::remove();
-
         if (sizeof(Cart::content()) > 0) {
             foreach (Cart::content() as $item) {
                 //dd($item);
@@ -96,6 +94,7 @@ class ProductController extends BaseController
                 }
             }
             if ($transactions->save() && $product->update()) {
+                Cart::destroy();
                 return Redirect::route('getAccount')
                     ->with('success', 'Theme(s) successfully bought, download here');
             } else {
