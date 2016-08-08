@@ -9,9 +9,10 @@ class AdminController extends BaseController
         return View::make('admin.productreview')
             ->with('users', $users)
             ->with('categories', $categories)
-            ->with('products' , Product::where('isFeatured' , '=' , 1)->paginate(6))
-            ->with('prods' , Product::where('isFeatured' , '=' , 0)->paginate(6));
+            ->with('products', Product::where('isFeatured', '=', 1)->paginate(6))
+            ->with('prods', Product::where('isFeatured', '=', 0)->paginate(6));
     }
+
     public function featureProduct($id)
     {
         $product = product::find($id);
@@ -19,6 +20,7 @@ class AdminController extends BaseController
         $product->save();
         return Redirect::route('productReview')->with('success', 'Product featured successfully');
     }
+
     public function unfeatureProduct($id)
     {
         $product = product::find($id);
@@ -26,28 +28,33 @@ class AdminController extends BaseController
         $product->save();
         return Redirect::route('productReview')->with('success', 'Product unfeatured successfully');
     }
+
     public function productDelete($id)
     {
         Product::find($id)->delete();
         return Redirect::route('productReview')->with('success', 'Product deleted successfully');
     }
+
     public function getAdmin()
     {
 
         return View::make('admin.admin');
     }
 
-    public function getAdminIndex(){
+    public function getAdminIndex()
+    {
         return View::make('admin/index');
     }
 
-    public function getAdminLogout() {
+    public function getAdminLogout()
+    {
         Auth::logout();
         Session::flush();
         return Redirect::route('home');
     }
 
-    public function adminRegister(){
+    public function adminRegister()
+    {
         $check = Input::get('admin_pin');
         if ($check === 'admin') {
             $validate = Validator::make(Input::all(), array(
@@ -58,16 +65,12 @@ class AdminController extends BaseController
                 'email' => 'required|unique:users|min:10',
                 'phone' => 'required|min:8',
             ));
+        } else {
+            return Redirect::route('getAdmin')->with('fail', 'Please enter the correct admin pin')->withInput();
         }
-        else {
-            return Redirect::route('getAdmin')->with('fail','Please enter the correct admin pin')->withInput();
-        }
-        if($validate->fails())
-        {
+        if ($validate->fails()) {
             return Redirect::route('getAdmin')->withErrors($validate)->withInput();
-        }
-        else
-        {
+        } else {
             $user = new User();
             $user->lastname = Input::get('lastname');
             $user->firstname = Input::get('firstname');
@@ -78,13 +81,9 @@ class AdminController extends BaseController
             $user->isAdmin = 1;
 
 
-
-            if($user->save())
-            {
+            if ($user->save()) {
                 return Redirect::route('home')->with('success', 'you registered sucessfully you can now login');
-            }
-            else
-            {
+            } else {
                 return Redirect::route('getAdmin')->with('fail', 'an error occured while creating your profile');
             }
         }

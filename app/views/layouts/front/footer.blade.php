@@ -5,32 +5,28 @@
         <div class="span3 aboutus">
           <h2>About Us </h2>
           <p>
-            "At vero eos et accusamus et iusto
-            odio dignissimos ducimus qui
-            blanditiis praesentium voluptatum
-            deleniti atque corrupti quos
-            dolores et quas molestias excepturi
-            sint occaecati cupiditate non
-            provident,
+            "Superthemes is a market place that brings theme designers and sellers
+            together. We give designers to market their products on our site for free
+            and get the chance to sell their works
             <br>
-            <br>similique sunt in culpa qui officia
-            deserunt mollitia animi,</p>
+            <br>Discounts and promos are also given occasionally</p>
         </div>
         <div class="span3 contact">
           <h2>Contact Us </h2>
           <ul>
             <li class="phone">+123 456 7890, +123 456 7890, <br>+123 456 7890</li>
             <li class="mobile">+123 456 7890, +123 456 7890, <br>+123 456 7890</li>
-            <li class="email">test@test.com <br>test@test.com</li>
+            <li class="email">info@superthemes.com <br>help@superthemes.com</li>
           </ul>
         </div>
         <div class="span3 twitter">
           <h2>Quick Links</h2>
           <ul class="nav-list categories">
             <li><a href="{{url('/')}}">Home</a></li>
-            <li><a href="{{url('cart')}}">Shopping Cart </a></li>
-            <li><a href="{{url('account')}}">Account</a></li>
+            <li><a href="{{url('cart/index')}}">Shopping Cart </a></li>
+            <li><a href="{{URL::route('getAccount')}}">Account</a></li>
             <li><a href="{{url('contact')}}">Contact </a></li>
+            <li><a href="{{URL::route('getWishlist')}}">Wishlist</a></li>
           </ul>
         </div>
         <div class="span3 newsletter">
@@ -75,13 +71,6 @@
       </tbody>
     </table>
   </div>
-  <!--
-  <div class="modal-footer">
-    <button data-dismiss="modal" class="btn">Continue Shoping</button>
-    <a href="{{url('checkout')}}"> <button class="btn btn-primary">Checkout</button></a>
-  </div>
-  </div>
-  -->
 
   <!-- Placed at the end of the document so the pages load faster -->
   {{HTML::script("js/jquery.js")}}

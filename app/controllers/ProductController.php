@@ -57,7 +57,7 @@ class ProductController extends BaseController
             ->with('categories', $categories)
             ->with('users', $users)
             ->with('prods', $prods)
-            ->with('comments' , Comment::where('product_id' , '=' , $product->id)->paginate(5));
+            ->with('comments', Comment::where('product_id', '=', $product->id)->paginate(5));
 
     }
 
@@ -75,6 +75,8 @@ class ProductController extends BaseController
 
     public function postTransactions()
     {
+        //Cart::remove();
+
         if (sizeof(Cart::content()) > 0) {
             foreach (Cart::content() as $item) {
                 //dd($item);
@@ -92,19 +94,24 @@ class ProductController extends BaseController
             }
         }
     }
-    public function getSearch() {
+
+    public function getSearch()
+    {
         $keyword = Input::get('keyword');
         $users = User::all();
         $products = Product::all();
         $categories = Category::all();
 
         return View::make('search')
-            ->with('products' , Product::where('title' , 'LIKE' , '%'.$keyword.'%')->get())
-            ->with('keyword' , $keyword)
+            ->with('products', Product::where('title', 'LIKE', '%' . $keyword . '%')->get())
+            ->with('keyword', $keyword)
             ->with('categories', $categories)
+            ->with('products', $products)
             ->with('users', $users);
     }
-    public function postComment() {
+
+    public function postComment()
+    {
         $comment = new Comment();
         $comment->user_id = Input::get('user_id');
         $comment->product_id = Input::get('product_id');

@@ -9,7 +9,7 @@
     <div class="container">
       <ul class="breadcrumb">
         <li><a href="{{url('/')}}">Home</a><span class="divider">/</span></li>
-        <li class="active">Wishlist</li>
+        <li class="active">Review</li>
       </ul>
       @if (Session::has('success'))
               <div class="container">

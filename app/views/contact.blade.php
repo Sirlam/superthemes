@@ -6,7 +6,15 @@
 
 <div id="maincontainer">
 	<!--Slider Starts-->
-
+	@if (Session::has('success'))
+            <div class="container">
+                <div class="alert alert-success"> {{ Session::get('success') }}</div>
+            </div>
+        @elseif (Session::has('fail'))
+            <div class="container">
+                <div class="alert alert-danger"> {{ Session::get('fail') }}</div>
+            </div>
+        @endif
     <!--Slider Ends-->
 	<div class="container">
     <ul class="breadcrumb">
@@ -35,40 +43,37 @@
 					</div>
 				</aside>
 
-				<aside>
-					<h1 class="headingfull"><span>Best Offer</span> </h1>
-					<div class="sidewidt">
-						<img alt="" src="{{url('images/adbanner2.jpg')}}">
-					</div>
-				</aside>
 			</div>
             <!--sidebar Ends-->
             <div class="span9">
-            <h1 class="productname">Contact Details</h1>
+            <h1 class="productname">Leave a message</h1>
           <form method="post" class="form-horizontal contactform span5" novalidate="novalidate">
             <fieldset>
-              <div class="control-group">
-                <label class="control-label" for="name">Name <span class="required">*</span></label>
+              <div class="control-group {{ ($errors->has('firstname')) ? 'has-error' : ''}}">
+                <label class="control-label" for="firstname">Name <span class="required">*</span></label>
                 <div class="controls">
-                  <input type="text" name="name" value="" id="name" class="required span3">
+                  <input type="text" name="firstname" id="firstname" class="required span3">
+                    @if ($errors->has('firstname'))
+                        {{ $errors->first('firstname') }}
+                    @endif
                 </div>
               </div>
-              <div class="control-group">
+              <div class="control-group {{ ($errors->has('email')) ? 'has-error' : ''}}">
                 <label class="control-label" for="email">Email <span class="required">*</span></label>
                 <div class="controls">
                   <input type="email" name="email" value="" id="email" class="required email span3">
+                    @if ($errors->has('email'))
+                        {{ $errors->first('email') }}
+                    @endif
                 </div>
               </div>
-              <div class="control-group">
-                <label class="control-label" for="phone">Phone</label>
-                <div class="controls">
-                  <input type="text" name="phone" value="" id="phone" class="required span3">
-                </div>
-              </div>
-              <div class="control-group">
-                <label class="control-label" for="message">Message</label>
+              <div class="control-group {{ ($errors->has('message')) ? 'has-error' : ''}}">
+                <label class="control-label" for="message">Message <span class="required">*</span></label>
                 <div class="controls">
                   <textarea name="message" id="message" cols="40" rows="6" class="required span3"></textarea>
+                    @if ($errors->has('message'))
+                        {{ $errors->first('message') }}
+                    @endif
                 </div>
               </div>
               <div class="form-actions">
