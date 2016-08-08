@@ -56,9 +56,9 @@
                 @endforeach
                 <input type="hidden" name="product_price" value="{{ $product->new_price }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <td class="total"><a class="btn" href="{{URL::route('addCart')}}">Add to Cart</a>
+                <td class="total"> <button type="submit" class="total btn btn-primary">Add to Cart </button>
                   <a href="{{url('/wishlist/delete/'.$product->id)}}"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
-                </form>
+              </form>
               </tr>
               @endif
               @endforeach

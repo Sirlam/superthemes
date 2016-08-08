@@ -26,6 +26,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     public function isAdmin()
     {
         return $this->isAdmin == 1;
+        return $this->roles == 2;
     }
 
     public function isSeller(){

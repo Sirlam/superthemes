@@ -99,14 +99,14 @@ class ProductController extends BaseController
     {
         $keyword = Input::get('keyword');
         $users = User::all();
-        $products = Product::all();
+        $prods = Product::all();
         $categories = Category::all();
 
         return View::make('search')
             ->with('products', Product::where('title', 'LIKE', '%' . $keyword . '%')->get())
             ->with('keyword', $keyword)
             ->with('categories', $categories)
-            ->with('products', $products)
+            ->with('prods', $prods)
             ->with('users', $users);
     }
 
