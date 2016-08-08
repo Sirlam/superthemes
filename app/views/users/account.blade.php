@@ -81,8 +81,8 @@
                 </tr>
 
                 @foreach($transactions as $transaction)
-                    @if($user->id == $transaction->user_id)
                     @foreach($products as $product)
+                    @if ($product->id == $transaction->product_id)
                     <tr>
                     <th class="image"><img width="30" height="30" alt="Theme" src="{{$product->image}}"> </th>
                     <th class="name">{{$product->title}}</th>
@@ -99,8 +99,8 @@
                      <a href="{{$product->upload_link}}" class="btn btn-primary btn-xs delete_theme">Download</a>
                       </th>
                     </tr>
-                    @endforeach
                     @endif
+                @endforeach
                 @endforeach
 
                 </table>
