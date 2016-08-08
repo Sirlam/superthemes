@@ -73,7 +73,6 @@
             <li><a href="{{url('category/'.$category->id)}}">{{ $category->name }}</a></li>
             @endforeach
             <li><a href="{{url('contact')}}">Contact</a></li>
-            <li><a href="{{url('blog')}}">Blog</a></li>
           </ul>
         </nav>
       </div>

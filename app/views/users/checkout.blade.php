@@ -164,7 +164,7 @@
                  <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <button type="submit" class="btn btn-success pull-right" > Submit</button>
-                form
+                </form>
                 <a type="button" href="{{url('/')}}" class="btn pull-right mr10"> Continue shopping</a>
             </div>
         </div>

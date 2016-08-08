@@ -10,6 +10,15 @@
         <li><a href="{{url('/')}}">Home</a><span class="divider">/</span></li>
         <li class="active">Cart</li>
       </ul>
+        @if (Session::has('success'))
+                <div class="container">
+                    <div class="alert alert-success"> {{ Session::get('success') }}</div>
+                </div>
+            @elseif (Session::has('fail'))
+                <div class="container">
+                    <div class="alert alert-danger"> {{ Session::get('fail') }}</div>
+                </div>
+            @endif
       <h1 class="productname">Presently in your cart</h1>
       <div class="cart-info">
             <table class="table table-striped table-bordered">
@@ -34,8 +43,8 @@
                  <form method="post" action="{{URL::route('removeCart')}}">
                  <input type="hidden" name="product_id" value="{{ $item->rowid }}">
                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                 <td class="total"><a class="btn" href="#">Remove Item</a>
-                 <a href="{{ URL::route('removeCart') }}"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
+                 <td class="total"><button class="btn" type="submit">Remove Item</button>
+                 <button type="submit"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></button></td>
                   </form>
               </tr>
               @endforeach

@@ -28,7 +28,7 @@
                 <th class="model">Category</th>
                 <th class="quantity">Owned By</th>
                 <th class="price">Unit Price</th>
-                <th class="total">Action</th>
+                <th class="total" id="center" >Action</th>
               </tr>
               @foreach($products as $product)
               <tr>
@@ -55,7 +55,8 @@
                 <input type="hidden" name="product_price" value="{{ $product->new_price }}">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <td class="total"><button class="btn" href="{{URL::route('addCart')}}">Add to Cart</button>
-                  <a href="{{url('/wishlist/delete/'.$product->id)}}"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></a></td>
+                <a class="btn" href="{{url('wishlist/add/'.$product->id)}}" >Add to wishlist</a></td>
+
                 </form>
               </tr>
               @endforeach
