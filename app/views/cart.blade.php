@@ -10,6 +10,15 @@
         <li><a href="{{url('/')}}">Home</a><span class="divider">/</span></li>
         <li class="active">Cart</li>
       </ul>
+        @if (Session::has('success'))
+                <div class="container">
+                    <div class="alert alert-success"> {{ Session::get('success') }}</div>
+                </div>
+            @elseif (Session::has('fail'))
+                <div class="container">
+                    <div class="alert alert-danger"> {{ Session::get('fail') }}</div>
+                </div>
+            @endif
       <h1 class="productname">Presently in your cart</h1>
       <div class="cart-info">
             <table class="table table-striped table-bordered">

@@ -3,6 +3,7 @@
 @section('body')
 
 <!--Content starts-->
+ @if(Auth::check() && Auth::user()->isAdmin())
 <div id="maincontainer">
 	<section id="checkout">
     <div class="container">
@@ -108,6 +109,11 @@
     </div>
     </div>
   </section>
+</div>
+@else
+<div class="alert-danger container">
+<h3 id="center"> You are not an admin <a href="{{ url('/') }}"> Please take me out of here</a> </h3>
+@endif
 </div>
 
 @stop

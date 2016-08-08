@@ -68,6 +68,9 @@
   </section> 
         <a id="gotop" href="#">Back to top</a>
 </footer>
+      </tbody>
+    </table>
+  </div>
 
   <!-- Placed at the end of the document so the pages load faster -->
   {{HTML::script("js/jquery.js")}}
