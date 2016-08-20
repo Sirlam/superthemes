@@ -93,6 +93,7 @@
           <div class="checkoutstep" style="display: none;">
             <p>Please select the preferred payment method to use on this order.</p>
             <label class=" inline">
+             <form  action="{{URL::route('getPayment')}}">
               <input type="radio" value="debit" name="payment" style="" checked>
               Debit Card</label>
             <br>
@@ -100,9 +101,10 @@
              <input type="radio" value="paypal" name="payment" style="">
                Pay Pal</label>
              <br>
+             </form>
             <div class="pull-right">
-              <a class="btn btn-success pull-right">Pay</a>
-              <div class="privacy">I have read and agree to the <a href="#">Privacy Policy</a>
+              <a type="button" href="{{URL::route('getPayment')}}" class="btn btn-success pull-right">Pay</a>
+              <div class="privacy">I have read and agree to the <a href="">Privacy Policy</a>
               </div>
             </div>
           </div>

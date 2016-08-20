@@ -7,8 +7,14 @@ Author: Gilbert Pellegrom
 Author URI: http://dev7studios.com
 Supports Thumbs: true
 */
+.mylist {
+    display: inline;
+}
+.center {
+    float: center;
+}
 #remove {
-    text-algn : right;
+    text-align : right;
 }
 .theme-default .nivoSlider {
 	position:relative;

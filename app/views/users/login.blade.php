@@ -18,7 +18,7 @@
                 <form class="form-vertical" method="post" action="{{ URL::route('postLogin')  }}">
                 <fieldset>
                     <div class="control-group {{ ($errors->has('email')) ? 'has-error' : ''}}">
-                        <label for="email" class="control-label">E-Mail Address:</label>
+                        <label for="email" class="control-label mylist">E-Mail Address:</label>
                             <div class="controls">
                                 <input id="email" name="email" type="email" class="span3">
                                 @if ($errors->has('email'))

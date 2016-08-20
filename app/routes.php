@@ -24,6 +24,12 @@ Route::group(array('before' => 'guest'), function () {
 });
 
 
+
+//payment routes
+Route::get('checkout/pay', array('uses' => 'PaymentController@getPayment', 'as' => 'getPayment'));
+//Route::post('checkout/pay', array('uses' => 'PaymentController@postCardPayment', 'as' => 'postCardPayment'));
+//Route::post('checkout/pay', array('uses' => 'PaymentController@postCardAuth', 'as' => 'postCardAuth'));
+
 //search routes
 Route::get('search', array('uses' => 'ProductController@getSearch', 'as' => 'getSearch'));
 

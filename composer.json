@@ -9,7 +9,8 @@
         "fzaninotto/faker": "1.3.*@dev",
         "intervention/image": "dev-master",
         "gloudemans/shoppingcart": "~1.2",
-		"rap2hpoutre/laravel-log-viewer": "^0.7.0"
+		"rap2hpoutre/laravel-log-viewer": "^0.7.0",
+        "guzzlehttp/guzzle": "~4.0"
 	},
 	"autoload": {
 		"classmap": [
