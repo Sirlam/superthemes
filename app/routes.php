@@ -28,7 +28,7 @@ Route::group(array('before' => 'guest'), function () {
 //payment routes
 Route::get('checkout/pay', array('uses' => 'PaymentController@getPayment', 'as' => 'getPayment'));
 //Route::post('checkout/pay', array('uses' => 'PaymentController@postCardPayment', 'as' => 'postCardPayment'));
-//Route::post('checkout/pay', array('uses' => 'PaymentController@postCardAuth', 'as' => 'postCardAuth'));
+Route::post('checkout/pay', array('uses' => 'PaymentController@postCardAuth', 'as' => 'postCardAuth'));
 
 //search routes
 Route::get('search', array('uses' => 'ProductController@getSearch', 'as' => 'getSearch'));
@@ -78,11 +78,12 @@ Route::group(array('before', 'admin'), function () {
 });
 
 //Product routes
+Route::get('product/{id}', array('uses' => 'ProductController@getProduct', 'as' => 'getProduct'));
 Route::group(array('before' => 'auth'), function () {
-    Route::get('product/{id}', array('uses' => 'ProductController@getProduct', 'as' => 'getProduct'));
     Route::get('product/delete/{id}', array('uses' => 'ProductController@deleteProduct', 'as' => 'deleteProduct'));
     Route::get('product/add', array('uses' => 'ProductController@addProduct', 'as' => 'addProduct'));
     Route::post('account/update', array('uses' => 'UserController@updateUser', 'as' => 'updateUser'));
+    Route::get('bought', array('uses' => 'ProductController@getBought', 'as' => 'getBought'));
     Route::group(array('before', 'csrf'), function () {
         Route::post('product/add', array('uses' => 'ProductController@postProduct', 'as' => 'postProduct'));
         Route::post('product/comment', array('uses' => 'ProductController@postComment', 'as' => 'postComment'));

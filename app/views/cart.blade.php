@@ -19,7 +19,7 @@
                     <div class="alert alert-danger"> {{ Session::get('fail') }}</div>
                 </div>
             @endif
-      <h1 class="productname">Presently in your cart</h1>
+      <h1 class="productname" id="center">Presently in your cart</h1>
       <div class="cart-info">
             <table class="table table-striped table-bordered">
               <tbody>
@@ -36,12 +36,12 @@
                <td class="image"><a href="#"><img width="30" height="30" src="{{url($item->product->image)}}" alt="product" title="product"></a></td>
                 <td class="name">{{ $item->product->title }}</td>
                 <td class="model">{{ $item->name }}</td>
-                <td class="price">{{ $item->price }}</td>
+                <td class="price"><b>₦</b>{{ round($item->price) }}</td>
                  <form method="post" action="{{URL::route('removeCart')}}">
                  <input type="hidden" name="product_id" value="{{ $item->rowid }}">
                  <input type="hidden" name="_token" value="{{ csrf_token() }}">
                  <td class="total">
-                 <button type="submit" class="btn btn-primary"><img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></button></td>
+                 <button type="submit" class="btn">remove<img alt="" src="{{url('images/remove.png')}}" data-original-title="Remove" class="tooltip-test"></button></td>
                   </form>
               </tr>
               @endforeach

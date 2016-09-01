@@ -1,5 +1,5 @@
 <?php
-use GuzzleHttp\Client;
+use Payment\Pwc;
 class PaymentController extends BaseController
 {
     public function getPayment(){
@@ -7,6 +7,31 @@ class PaymentController extends BaseController
     }
     public function postCardAuth()
     {
+       $p = new Pwc;
+        $data = Input::all();
+        //dd($data);
+        $exp = explode('-', $data['month']);
+        //$exp   = preg_split('/\s+/', $data['month']);
+        $data['expyear'] = $exp[0];
+        $data['expmth'] = $exp[1];
+        //dd($data);
+        $test = $p->tokenizeCard($data);
+        $check = $test['data']['responsecode'];
+        //dd($test['data']['responsecode']);
+        if ($check == "02")
+        {
+            return View::make('users.otp')->with('success', 'payment awaiting validation enter the otp sent to your number or email');
+        }
+        elseif ($check == "00")
+        {
+            $secure = $test['data']["transactionreference"];
+                Session::put('secure', $secure);
+            return View::make('users.bought')->with('success', 'theme\'s succesfully bought');
+        }
+        else
+        {
+            return Redirect::back()->with('fail', 'an Error occured transaction cannot be completed please check your card details and try again');
+        }
             // $client = new Client();
             /*$r = $client->post('https://pwcstaging.herokuapp.com/oauth/token',[
                 'form_params' => [

@@ -2,9 +2,8 @@
 class Wishlist extends Eloquent
 {
     protected $guarded = array('id');
-    public function wishlists()
+    public function user()
     {
-        return $this->hasMany(Product);
-        return $this->hasMany(User);
+        return $this->belong('User');
     }
 }

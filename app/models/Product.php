@@ -9,4 +9,8 @@ class Product extends Eloquent
     {
         return $this->belongsTo('Category');
     }
+    public function comments()
+    {
+        return $this->hasMany('Comment', 'product_id');
+    }
 }

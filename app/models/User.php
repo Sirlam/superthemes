@@ -32,5 +32,20 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     public function isSeller(){
         return $this->isSeller == 1;
     }
-
+    public function accounts()
+    {
+        return $this->hasMany('Account', 'user_id');
+    }
+    public function comments()
+    {
+        return $this->hasMany('Comment', 'user_id');
+    }
+    public function transactions()
+    {
+        return $this->hasMany('Transaction', 'user_id');
+    }
+    public function wishlists()
+    {
+        return $this->hasMany('Wishlist', 'user_id');
+    }
 }

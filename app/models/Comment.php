@@ -5,9 +5,12 @@ class Comment extends Eloquent
 
     protected $table = 'comments';
 
-    public function category()
+    public function product()
     {
-        return $this->hasMany(Product);
-        return $this->hasMany(User);
+        return $this->belongsTo('Product');
+    }
+    public function user()
+    {
+        return $this->belongsTo('User');
     }
 }

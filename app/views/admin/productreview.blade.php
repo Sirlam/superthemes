@@ -52,7 +52,7 @@
                 <td class="quantity">{{ $user->firstname }}</td>
                 @endif
                 @endforeach
-                <td class="price">{{ $product->new_price }}</td>
+                <td class="price"><b>₦</b>{{ round($product->new_price) }}</td>
                 <td class="total">
                   <a class="btn btn-danger btn-small" type="button" href="{{url('/admin/products/delete/'.$product->id)}}">delete</a>
                   <a class="btn btn-danger btn-small" type="button" href="{{url('/admin/products/unfeature/'.$product->id)}}">unfeature</a>
@@ -92,7 +92,7 @@
                         <td class="quantity">{{ $user->firstname }}</td>
                         @endif
                         @endforeach
-                        <td class="price">{{ $prod->new_price }}</td>
+                        <td class="price"><b>₦</b>{{ round($prod->new_price) }}</td>
                         <td class="total">
                           <a class="btn btn-danger btn-small" type="button" href="{{url('/admin/products/delete/'.$prod->id)}}">delete</a>
                           <a class="btn btn-primary btn-small" type="button" href="{{url('/admin/products/feature/'.$prod->id)}}">feature</a>

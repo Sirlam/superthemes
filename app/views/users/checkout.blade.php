@@ -47,8 +47,8 @@
             <section class="returncustomer">
               <h3 class="heading3">Returning Customer </h3>
               <div class="loginbox">
-                             <form class="form-vertical" method="post" action="{{ URL::route('postLogin')  }}">
-                             <fieldset>
+                    <form class="form-vertical" method="post" action="{{ URL::route('postLogin')  }}">
+                           <fieldset>
                                  <div class="control-group {{ ($errors->has('email')) ? 'has-error' : ''}}">
                                      <label for="email" class="control-label">E-Mail Address:</label>
                                          <div class="controls">
@@ -73,12 +73,12 @@
                                              Remember me
                                          </div>
                                          {{ Form::token() }}
-                                 <a href="{{url('remind')}}" class="">Forgotten Password?</a>
-                    <br>
-                    <br>
-                    <button type="submit" class="btn btn-success">Login</button>
-                  </fieldset>
-                </form>
+                                         <a href="{{url('remind')}}" class="">Forgotten Password?</a>
+                                        <br>
+                                        <br>
+                                        <button type="submit" class="btn btn-success">Login</button>
+                           </fieldset>
+                        </form>
               </div>
             </section>
           </div>
@@ -91,7 +91,7 @@
           <div class="checkoutsteptitle">Step 2: Payment  Method<a class="modify">Modify</a>
           </div>
           <div class="checkoutstep" style="display: none;">
-            <p>Please select the preferred payment method to use on this order.</p>
+           <!-- <p>Please select the preferred payment method to use on this order.</p>
             <label class=" inline">
              <form  action="{{URL::route('getPayment')}}">
               <input type="radio" value="debit" name="payment" style="" checked>
@@ -107,7 +107,7 @@
               <div class="privacy">I have read and agree to the <a href="">Privacy Policy</a>
               </div>
             </div>
-          </div>
+          </div>-->
           <div class="checkoutsteptitle down">Step 3: Confirm Order<a class="modify">Modify</a>
           </div>
           <div class="checkoutstep" style="display: none;">
@@ -128,7 +128,7 @@
                             <td class="image"><a href="#"><img width="30" height="30" src="{{url($item->product->image)}}" alt="product" title="product"></a></td>
                             <td class="name">{{ $item->product->title }}</td>
                             <td class="model">{{ $item->name }}</td>
-                            <td class="price">{{ $item->price }}</td>
+                            <td class="price"><b>₦</b>{{ round($item->price) }}</td>
                             <form method="post" action="{{URL::route('removeCart')}}">
                                 <input type="hidden" name="product_id" value="{{ $item->rowid }}">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -152,21 +152,17 @@
                 <table class="table table-striped table-bordered ">
                 <tbody>
                 <tr>
-                    <td><span class="extra bold">Sub-Total :</span></td>
-                    <td><span class="bold">$101.0</span></td>
+                    <td><span class="extra bold">Total items:</span></td>
+                    <td><span class="bold">{{ Cart::count() }}</span></td>
                 </tr>
                 <tr>
                     <td><span class="extra bold totalamout">Total :</span></td>
-                    <td><span class="bold totalamout">{{ Cart::total() }}</span></td>
+                    <td><span class="bold totalamout"> <b id="naira1">₦</b>{{ round(Cart::total()) }}</span></td>
                 </tr>
                 </tbody>
                 </table>
                 <br>
-                 <form method="post" action="{{URL::route('postTransactions')}}">
-                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <button type="submit" class="btn btn-success pull-right" > Submit</button>
-                </form>
+                <a class="btn btn-success pull-right" href="{{ URL::route('getPayment') }}"> Pay Now</a>
                 <a type="button" href="{{url('/')}}" class="btn pull-right mr10"> Continue shopping</a>
             </div>
         </div>

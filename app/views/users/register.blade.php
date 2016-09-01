@@ -97,7 +97,7 @@
                   <div class="controls">
                     <input id="email" name="email" type="email" class="input-xlarge">
                     @if ($errors->has('email'))
-                                {{ $errors->first('email') }}
+                                <p class="alert alert-danger">{{ $errors->first('email') }}</p>
                             @endif
                   </div>
                 </div>

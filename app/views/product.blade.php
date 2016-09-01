@@ -46,7 +46,7 @@
               <h1 class="productname">{{$product->title}}</h1>
               <div class="productprice">
                 <div class="proldprice">{{$product->old_price}}</div>
-                <div class="prnewprice span2 margin-none">{{$product->new_price}}</div>
+                <div class="prnewprice span2 margin-none"><b>₦</b>{{round($product->new_price)}}</div>
                 @foreach($users as $user)
                     @if($user->id == $product->user_id)
                 <div class="pull-right"><span class="label label-success">By:</span> {{$user->firstname}}</div>
@@ -83,17 +83,19 @@
              </ul>
                 <div class="tab-content">
                   <div class="tab-pane active" id="comments">
-                  <h2>Comments on this theme</h2>
-                 @foreach($comments as $comment)
-                  <p>{{$comment->comment}}</p>
-                  @foreach($users as $user)
-                  @if($user->id == $comment->user_id)
-                  <p> <strong>BY {{ $user->firstname }}</strong></p>
-                  @endif
-                  @endforeach
-                  @endforeach
-                  </div>
-                    <div id="pagination">
+                  <h2 class="com2">Comments on this theme</h2>
+                    <div class="panel panel-warning">
+                    @foreach($comments as $comment)
+                       @foreach($users as $user)
+                          @if($user->id == $comment->user_id)
+                        <div class="panel-heading com"><span class="totalamout"> {{ $user->firstname}} {{ $user->lastname }}</span></div>
+                        @endif
+                      @endforeach
+                        <div class="panel-body com2">{{$comment->comment}}</div>
+                    @endforeach
+                   </div>
+                 </div>
+                    <div id="pagination" class="com2">
                        {{ $comments->links() }}
                       </div>
                 </div>

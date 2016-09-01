@@ -1,6 +1,18 @@
 @charset "utf-8";
 /* CSS Document */
 /* ------------ Reset ------------ */
+.com
+{
+    margin-top: 2%;
+}
+.com2
+{
+    margin-bottom: 2%;
+}
+#naira1
+{
+ font-size: 22px
+}
 #pagination {
     height: 50px;
     line-height: 50px;

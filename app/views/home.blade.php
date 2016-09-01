@@ -44,7 +44,7 @@
 					</div>
 				</aside>
 				<aside>
-       			 <h1 class="headingfull"><span>Best Seller</span></h1>
+       			 <h1 class="headingfull"><span>Best Sellers</span></h1>
           			<div class="sidewidt">
            			 <ul class="bestseller">
                         @foreach($best_seller as $best)
@@ -56,11 +56,13 @@
                                     <span class="procategory">{{ $category->name }}</span>
                                 @endif
                             @endforeach
-                            <span class="price">{{ $best->new_price }}</span>
+                            <span class="price"><b id="naira1">₦</b>{{ round($best->new_price) }}</span>
                           </li>
                           @endforeach
-
                         </ul>
+                        <div class="pagination">
+                        {{ $best_seller->links() }}
+                        </div>
                       </div>
                       </aside>
 				<aside>
@@ -76,7 +78,7 @@
                                     <span class="procategory">{{ $category->name }}</span>
                                 @endif
                             @endforeach
-                            <span class="price">{{ $offer->new_price }}</span>
+                            <span class="price"><b id="naira1">₦</b>{{ round($offer->new_price) }}</span>
                           </li>
                           @endforeach
                         </ul>
@@ -107,7 +109,7 @@
               @if($product->old_price!== null)
                 <span class="oldprice">{{ $product->old_price }}</span>
               @endif
-                <span class="newprice">{{ $product->new_price }}</span>
+                <span class="newprice"><b id="naira1">₦</b>{{ round($product->new_price) }}</span>
               </div>
               <form method="post" action="{{URL::route('addCart')}}">
               <input type="hidden" name="product_id" value="{{ $product->id }}">

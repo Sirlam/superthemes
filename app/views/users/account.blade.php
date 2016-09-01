@@ -17,6 +17,7 @@
         <ul class="nav nav-tabs" id="myTab">
             <li class="active"><a href="#view_themes">Purchased Items</a> </li>
             <li><a href="#add_theme">My Profile</a> </li>
+            <li><a href="#sold_themes">Sold Themes</a> </li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane" id="add_theme">
@@ -102,11 +103,62 @@
                     @endif
                 @endforeach
                 @endforeach
+                </table>
+                </div>
+                </div>
+                <div class="tab-pane" id="sold_themes">
+                <h2>Items sold</h2>
+                    <div class="table-div">
+                    <table class="table table-striped table-bordered">
+                    <tr>
+                        <th class="image">Image</th>
+                        <th class="name">Theme Title</th>
+                        <th class="model">Description</th>
+                        <th class="price">Price</th>
+                        <th class="categorytitle">Category</th>
+                        <th class="total"> number sold </th>
+                    </tr>
+                @foreach($products as $product)
+                    @if ($product->sold > 0 && $product->user_id == Auth::user()->id )
+                    <tr>
+                        <th class="image"><img width="30" height="30" alt="Theme" src="{{$product->image}}"> </th>
+                        <th class="name">{{$product->title}}</th>
+                        <th class="model">{{$product->description}}</th>
+                        <th class="price">{{round($product->new_price)}}</th>
+                    @foreach($categories as $category)
+                        @if($category->id == $product->category_id)
+                        <th class="categorytitle">
+                            {{$category->name}}
+                        </th>
+                         @endif
+                    @endforeach
+                    <th class="price">{{$product->sold}}</th>
+                    </tr>
+                    @endif
+                @endforeach
 
                 </table>
+                <div class="row">
+                 <div class="pull-right">
+                  <div class="span4 pull-right">
+                     <table class="table table-striped table-bordered ">
+                         <tbody>
+                         <tr>
+                             <td><span class="extra bold">number of newly sold :</span></td>
+                             <td><span class="bold">{{ $count }}</span></td>
+                         </tr>
+                         <tr>
+                             <td><span class="extra bold totalamout">Total Cashout Balance:</span></td>
+                             <td><span class="bold totalamout"><b id="naira1">₦</b>{{ round($cbalance) }}</span></td>
+                         </tr>
+                       </tbody>
+                     </table>
+                  </div>
+                 </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 @stop

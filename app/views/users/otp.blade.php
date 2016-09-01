@@ -65,63 +65,7 @@
  <div class="span6 offset2">
 <section id="featured">
      <form class="form-horizontal" method="post" action="{{ URL::route('postCardAuth')  }}" enctype="multipart/form-data">
-            <h3 class="center">Your Transaction Details</h3>
-            <div class="registerbox">
-              <fieldset>
-             <div class="control-group {{ ($errors->has('cardno')) ? 'has-error' : ''}}">
-               <label for="cardnumber" class="control-label"><span class="red">*</span> Card Number:</label>
-               <div class="controls">
-                 <input id="cardnumber" name="cardno" type="text" class="input-xlarge">
-             @if ($errors->has('cardno'))
-             {{ $errors->first('cardno') }}
-                         @endif
-               </div>
-             </div>
-                <div class="control-group {{ ($errors->has('month')) ? 'has-error' : ''}} {{ ($errors->has('year')) ? 'has-error' : ''}}">
-                  <label for="month" class="control-label"><span class="red">*</span> Expiry Month:</label>
-                  <div class="controls">
-                    <input id="month" name="month" type="month" class="input-xlarge">
-                @if ($errors->has('month'))
-                {{ $errors->first('month') }}
-                            @endif
-                  </div>
-                </div>
-               <!-- <div class="control-group {{ ($errors->has('year')) ? 'has-error' : ''}}">
-                  <label for="year" class="control-label"><span class="red">*</span> Expiry Year:</label>
-                  <div class="controls">
-                    <input id=year" name="year" type="text" class="input-xlarge">
-                  </div>
-                </div>-->
-                <div class="control-group {{ ($errors->has('cvv')) ? 'has-error' : ''}}">
-                  <label for="cv2" class="control-label"><span class="red">*</span> CVV/CV2:</label>
-                  <div class="controls">
-                    <input id="cv2" name="cvv" type="password" class="input-xlarge">
-                @if ($errors->has('cvv'))
-                {{ $errors->first('cvv') }}
-                            @endif
-                  </div>
-                  </div>
-                <div class="control-group {{ ($errors->has('pin')) ? 'has-error' : ''}}">
-                  <label for="cardpin" class="control-label">Card Pin:</label>
-                  <div class="controls">
-                    <input id="cardpin" name="pin" type="password"  class="input-xlarge">
-                @if ($errors->has('pin'))
-                {{ $errors->first('pin') }}
-                            @endif
-                  </div>
-                </div>
-                </fieldset>
-                </div>
-                <fieldset >
-                <div class="control-group"{{ ($errors->has('amount')) ? 'has-error' : ''}}>
-                  <label for="amount" class="control-label"><span class="red">*</span> Amount:</label>
-                  <div class="controls">
-                    <input id="amount" name="amount" type="text" value="{{ Cart::total() }}" class="input-xlarge" readonly>
-                            @if ($errors->has('amount'))
-                            {{ $errors->first('amount') }}
-                            @endif
-                  </div>
-                </div>
+            <h3 class="center">Pls enter the OTP sent to you</h3>
                 <div class="control-group {{ ($errors->has('description')) ? 'has-error' : ''}}">
                   <label for="description" class="control-label"><span class="red">*</span> Payment Narration:</label>
                   <div class="controls">

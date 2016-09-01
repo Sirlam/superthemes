@@ -38,7 +38,7 @@
                                 @if ($category->id == $best->category_id)
                                     <span class="procategory">{{ $category->name }}</span>
                                 @endif
-                            <span class="price">{{ $best->new_price }}</span>
+                            <span class="price"><b id="naira1">₦</b>{{ round($best->new_price) }}</span>
                           </li>
                           @endforeach
                         </ul>
@@ -57,7 +57,7 @@
                                     <span class="procategory">{{ $category->name }}</span>
                                 @endif
                             @endforeach
-                            <span class="price">{{ $offer->new_price }}</span>
+                            <span class="price"><b id="naira1">₦</b>{{ round($offer->new_price) }}</span>
                           </li>
                           @endforeach
                         </ul>
@@ -87,7 +87,7 @@
               @if($product->old_price!== null)
                 <span class="oldprice">{{ $product->old_price }}</span>
               @endif
-                <span class="newprice">{{ $product->new_price }}</span>
+                <span class="newprice"><b id="naira1">₦</b>{{ round($product->new_price) }}</span>
               </div>
               <form method="post" action="{{URL::route('addCart')}}">
               <input type="hidden" name="product_id" value="{{ $product->id }}">
