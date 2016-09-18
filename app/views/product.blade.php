@@ -99,6 +99,7 @@
                        {{ $comments->links() }}
                       </div>
                 </div>
+                @if (Auth::check())
                 <form method="post" action="{{URL::route('postComment')}}">
                 <div class="control-group">
                 <label for="comment" class="control-label">Comment:</label>
@@ -111,6 +112,10 @@
                 <input type="Submit" value="submit comment" class="btn btn-primary">
                 </div>
                 </form>
+                @else
+                <div class="alert alert-danger com"> <p> Please sign up or login to comment on this theme. </p> </div>
+            @endif
+
             </div>
           </div>
         </div>

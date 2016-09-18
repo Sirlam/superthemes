@@ -1,6 +1,10 @@
 @charset "utf-8";
 /* CSS Document */
 /* ------------ Reset ------------ */
+#com
+{
+    margin-top: 5%;
+}
 .com
 {
     margin-top: 2%;
